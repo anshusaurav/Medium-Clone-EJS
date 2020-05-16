@@ -1,111 +1,135 @@
 <%- include('partials/header') -%>
-<div class="container">
-<% console.log(article) %>
-<div>
-    <div class='grid-col-end'>
-        <% if(article.author.id === user.id) { %>
-            <a href='/articles/<%= article.id %>/edit'><i title="Edit" class="far fa-edit"></i></a>
-            <a href='/articles/<%= article.id %>/delete'><i title="Delete" class="far fa-trash-alt"></i></a> 
-        <% }%>
-        <% console.log(article.author.id + "|" + user.id) %>
-    </div>
 
-    <div>
-        <div class='article-page-title-container'>
-            <h2 class='article-page-title'><%= article.title%></h2>
-            <div class='article-page-title-author-div'>
-                <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= article.author.avatar %>"/></div>
-                <div class='article-page-grid-user-follow article-page-author'>
-                    <a href = "/users/<%=article.author.id%>"class='article-auth-grid-elem article-auth-link'><%= article.author.name%></a> 
-                    <span class='article-update-displ-grid-elem article-update-displ'><%= article.updatedAt.toString().substr(4,11) %></span>
-                    <div class='article-author-fol-div com-view-art-follow'>
-                        <% if(article.author.id !== user.id) { %>
-                            <% if(article.author.followers.includes(user.id)) { %>
-                              <a href="/users/<%= article.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
-                            <% } else {%>
-                              <a href="/users/<%= article.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
-                            <% } %>
-                          <% } %>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class='special-container'>
+    <div class='special-left-panel'>
         
-        <div class='showdown-area'>
-            <%- text %>
-        </div>
         <div class='like-grid'>
-            <a href='/articles/<%= article.id%>/like'><i class="fas fa-thumbs-up 
-                <% if(user.likedArticles.includes(article.id)) {%>
-                <%= 'liked-art' %>
-                <% } %>
-                "></i></a>
-            <span class='likes-count'><%= `LIKES: ${article.readersLiked.length}`%></span>
-            
+            <a href='/articles/<%= article.id%>/like'>
+                <i class="fas fa-heart normal-art
+                    <% if(user.likedArticles.includes(article.id)) {%>
+                    <%= 'liked-art' %>
+                    <% } %>
+                "></i>
+            </a>
+            <span class='likes-count'><%= `${article.readersLiked.length}`%></span>
         </div>
-        <div class='tags-grid'>
-            <% article.tags.forEach(element => { %>
-                <div class="tag-elem-div"><a href="/tags/<%= element %>"class="tag-elem"> <%= element%></a></div>
-            <% }); %>
+        <div class='comment-left-special'>
+
+        </div>
+        <div class='twitter-share-left-special'>
+
         </div>
     </div>
-    <% if(article.comments.length) { %>
-        <h2 class='response-title'>Responses<%= `(${article.comments.length})` %></h2>
-        <div class='comments-list-grid'>
-        <% article.comments.forEach(elem => { %>
-            <div class='single-comment'>
-                <div class="comment-content-div">
-                
-                    <p class='comment-text'>&#8220;<%= `${elem.content.trim()}`%>&#8221;</p>
-                    <% console.log(user.id  +'||||||'+ elem.author) %>
-                    <% if(user.id == elem.author.id) { %>
-                    <a href="/articles/<%= article.id %>/comments/<%= elem.id %>/edit">
-                        <i class="far fa-edit art-comment-btn">
-                        </i>
-                    </a>
-                    <a href="/articles/<%= article.id %>/comments/<%= elem.id %>/delete">
-                        <i class="far fa-trash-alt art-comment-btn">
 
-                        </i>
-                    </a>
-                    <% } %>
-                </div>
-                <div class="comment-author-div">
-                    <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
-                    <div class='article-page-grid-user-follow com-author-view'>
-                        
-                            <a href="/users/<%= elem.author.id %>/" class="article-auth-grid-elem by-span"><%= elem.author.name%></a> 
-                            <span class="by-span-date article-update-displ-grid-elem"><%= elem.updatedAt.toString().substr(4,11)%></span>
-                            <div class='com-view-art-follow'>
-                                <% if(elem.author.id !== user.id) { %>
-                                    <% if(elem.author.followers.includes(user.id)) { %>
-                                    <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
-                                    <% } else {%>
-                                    <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
-                                    <% } %>
+    <div class="container">
+    <% console.log(article) %>
+    <div>
+        <div class='grid-col-end'>
+            <% if(article.author.id === user.id) { %>
+                <a href='/articles/<%= article.id %>/edit'><i title="Edit" class="far fa-edit"></i></a>
+                <a href='/articles/<%= article.id %>/delete'><i title="Delete" class="far fa-trash-alt"></i></a> 
+            <% }%>
+            <% console.log(article.author.id + "|" + user.id) %>
+        </div>
+
+        <div>
+            <div class='article-page-title-container'>
+                <h2 class='article-page-title'><%= article.title%></h2>
+                <div class='article-page-title-author-div'>
+                    <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= article.author.avatar %>"/></div>
+                    <div class='article-page-grid-user-follow article-page-author'>
+                        <a href = "/users/<%=article.author.id%>"class='article-auth-grid-elem article-auth-link'><%= article.author.name%></a> 
+                        <span class='article-update-displ-grid-elem article-update-displ'><%= article.updatedAt.toString().substr(4,11) %></span>
+                        <div class='article-author-fol-div com-view-art-follow'>
+                            <% if(article.author.id !== user.id) { %>
+                                <% if(article.author.followers.includes(user.id)) { %>
+                                <a href="/users/<%= article.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                <% } else {%>
+                                <a href="/users/<%= article.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
                                 <% } %>
-                            </div>
+                            <% } %>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <% })%>
-        </div>
-        <% } else { %>
-         <h2>No response, be the first one to post.</h2>
-        <% } %> 
-    <form class="comment-form" action="/articles/<%= article.id %>/comments" method="POST">
-        <textarea class="comment-area" name="content" placeholder="Add response" required></textarea>
-        <div class="comment-flex-col-2">
             
-            <input id="comment-btn" type="submit" value="Add Response">
+            <div class='showdown-area'>
+                <%- text %>
+            </div>
+            <div class='like-grid'>
+                <a href='/articles/<%= article.id%>/like'><i class="fas fa-heart 
+                    <% if(user.likedArticles.includes(article.id)) {%>
+                    <%= 'liked-art' %>
+                    <% } %>
+                    "></i></a>
+                <span class='likes-count'><%= `LIKES: ${article.readersLiked.length}`%></span>
+                
+            </div>
+            <div class='tags-grid'>
+                <% article.tags.forEach(element => { %>
+                    <div class="tag-elem-div"><a href="/tags/<%= element %>"class="tag-elem"> <%= element%></a></div>
+                <% }); %>
+            </div>
         </div>
-    </form>
-</div>
-<div class="grid-col-3">
-    <a href='/articles'><i title="Back" class="fas fa-backward"></i></a>
-    
-</div>
+        <% if(article.comments.length) { %>
+            <h2 class='response-title'>Responses<%= `(${article.comments.length})` %></h2>
+            <div class='comments-list-grid'>
+            <% article.comments.forEach(elem => { %>
+                <div class='single-comment'>
+                    <div class="comment-content-div">
+                    
+                        <p class='comment-text'>&#8220;<%= `${elem.content.trim()}`%>&#8221;</p>
+                        <% console.log(user.id  +'||||||'+ elem.author) %>
+                        <% if(user.id == elem.author.id) { %>
+                        <a href="/articles/<%= article.id %>/comments/<%= elem.id %>/edit">
+                            <i class="far fa-edit art-comment-btn">
+                            </i>
+                        </a>
+                        <a href="/articles/<%= article.id %>/comments/<%= elem.id %>/delete">
+                            <i class="far fa-trash-alt art-comment-btn">
+
+                            </i>
+                        </a>
+                        <% } %>
+                    </div>
+                    <div class="comment-author-div">
+                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class='article-page-grid-user-follow com-author-view'>
+                            
+                                <a href="/users/<%= elem.author.id %>/" class="article-auth-grid-elem by-span"><%= elem.author.name%></a> 
+                                <span class="by-span-date article-update-displ-grid-elem"><%= elem.updatedAt.toString().substr(4,11)%></span>
+                                <div class='com-view-art-follow'>
+                                    <% if(elem.author.id !== user.id) { %>
+                                        <% if(elem.author.followers.includes(user.id)) { %>
+                                        <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                        <% } else {%>
+                                        <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+            <% } else { %>
+            <h2>No response, be the first one to post.</h2>
+            <% } %> 
+            <form class="comment-form" action="/articles/<%= article.id %>/comments" method="POST">
+                <textarea class="comment-area" name="content" placeholder="Add response" required></textarea>
+                <div class="comment-flex-col-2">
+                <input id="comment-btn" type="submit" value="Add Response">
+                </div>
+            </form>
+        </div>
+        <div class="grid-col-3">
+            <a href='/articles'><i title="Back" class="fas fa-backward"></i></a>
+        </div>
+    </div>
+    <div class='special-right-panel'>
+
+    </div>
 </div>
 <script>
     

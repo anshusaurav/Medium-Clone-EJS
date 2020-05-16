@@ -7,7 +7,8 @@
 body {
   
   min-height: 100vh;
-  background: #EBF5FC;
+  background: #fafafa;
+  text-rendering: optimizeLegibility;
 }
 
 
@@ -245,4 +246,23 @@ a{
 }
 .home-page-hero-no-tag{
   font-size: 24px;
+}
+
+.special-container{
+  display: grid;
+  width: 100%;
+  grid-template-columns:1fr 1080px 1fr;
+}
+.special-left-panel, .special-right-panel{
+  background-color: #fdfdfd;
+  /* posit  ion: relative; */
+}
+.special-left-panel{
+  left: 0;
+  top: 0;
+
+}
+.special-right-panel{
+  right: 0;
+  top: 0;
 }

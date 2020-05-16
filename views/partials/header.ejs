@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Alt-Pages</title>
+    <title>Medium -Get smarted about what matters to you</title>
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <link rel="stylesheet" href="/stylesheets/main.css"/>
     <link rel="stylesheet" href="/stylesheets/prism.css"/>
+    <link rel="shortcut icon" type="image/png" href="/images/medium-favicon.png"/>
     <script src="https://kit.fontawesome.com/f4ce9ea80b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <script src="/javascripts/main.js" defer></script>
@@ -21,7 +22,7 @@
   </head>
   <body>
     <header>
-      <a href='/'><p class='header-links' id='logo-p'>Alt-Pages</p></a>
+      <a href='/'><p class='header-links' id='logo-p'>Medium</p></a>
       <% if(isUser){ %>
         <a href="/users/logout"><div class="button header-links"> Sign out </div></a>
         <a href="/users/<%=user.id %>"><div class="button header-links"><i class="far fa-user"></i> <%= user.name.split(' ')[0] %></div></a>

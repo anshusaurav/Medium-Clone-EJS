@@ -8,7 +8,8 @@ body {
   font-family: 'Muli', sans-serif;
   font-size: 14px;
   color: rgb(37, 37, 37);
-  background: #EBF5FC
+  background: #fafafa;
+  text-rendering: optimizeLegibility;
   /* -webkit-font-smoothing: antialiased; */
 }
 .container{
@@ -58,6 +59,7 @@ a {
 }
 .single-heading{
   color: #333333;
+  margin-bottom: 4px;
 }
 .like-grid{
   margin-top: 1rem;
@@ -67,18 +69,23 @@ a {
   display: grid;
   grid-template-columns: 50px 144px 50px;
 }
-.fas {
-  color: #363636;
-}
-.fas:hover {
-  color: #363636;
-  transition: all 0.2s ease-in-out;
-}
+
+
 .like-grid > *{
   justify-self: start;
 }
+.fa-heart{
+  margin: 4px;
+  color: rgba(255, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
 .liked-art {
-  color: #70a627;
+  color: rgba(255,0, 0,0.6);
+  border-radius: 50%;
+  border: 2px solid rgba(255,0, 0,0.6);
+  padding: 2px;
+  transition: all 0.2s ease-in-out;
 }
 .disliked-art {
   color: rgb(119, 25, 25);

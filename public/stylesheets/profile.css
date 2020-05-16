@@ -19,6 +19,7 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
+  text-rendering: optimizeLegibility;
 }
 
 .profile-container {
