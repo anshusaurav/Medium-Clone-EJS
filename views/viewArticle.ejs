@@ -2,22 +2,57 @@
 
 <div class='special-container'>
     <div class='special-left-panel'>
-        
-        <div class='like-grid'>
-            <a href='/articles/<%= article.id%>/like'>
-                <i class="fas fa-heart normal-art
-                    <% if(user.likedArticles.includes(article.id)) {%>
-                    <%= 'liked-art' %>
-                    <% } %>
-                "></i>
-            </a>
-            <span class='likes-count'><%= `${article.readersLiked.length}`%></span>
-        </div>
-        <div class='comment-left-special'>
-
-        </div>
-        <div class='twitter-share-left-special'>
-
+        <div class='left-pannel-inner-div'>
+            <div class='left-special like-left-special'>
+                <div>
+                    <a href='/articles/<%= article.id%>/like' class='like-link'> 
+                        <img class="img-like 
+                            <% if(user.likedArticles.includes(article.id)) {%>
+                            <%= 'liked-art' %>
+                            <% } %>
+                        " src='/images/like-img.png'/>
+                    </a>
+                </div>
+                <span class='likes-count'><%= `${article.readersLiked.length}`%></span>
+            </div>
+            <div class='left-special comment-left-special'>
+                <div>
+                    <a href='#all-comments' class='like-link'> 
+                        <i class="fas fa-comment-alt comment-sp"></i>
+                    </a>
+                </div>
+                <span class='likes-count'><%= `${article.comments.length}`%></span>
+            </div>
+            <div class='twitter-share-left-special'>
+                <a class="share-btn share-btn-branded share-btn-twitter" href="https://twitter.com/share?url=http%3A%2F%2Flocalhost:3000/articles/<%= article.id %>/&amp;text=<%= article.title %>&amp;via=anshusaurav" title="Share on Twitter">
+                    <span class="share-btn-icon"></span>
+                    <span class="share-btn-text-sr">Twitter</span>
+                </a>
+            </div>
+            <div class='twitter-share-left-special'>
+                <a class="share-btn share-btn-branded share-btn-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost:3000/articles/<%=article.id %>/"
+                    title="<%= article.title %>">
+                    <span class="share-btn-icon"></span>
+                    <span class="share-btn-text-sr">Facebook</span>
+                </a>
+            </div>
+            <div class='twitter-share-left-special'>
+                <a class="share-btn share-btn-branded share-btn-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost:3000/articles/<%=article.id %>/"
+                    title="<%= article.title %>">
+                        <span class="share-btn-icon"></span>
+                        <span class="share-btn-text-sr">LinkedIn</span>
+	            </a>
+            </div>
+            <div class='twitter-share-left-special'>
+                <a class="share-btn share-btn-email"
+                    href="mailto:?subject=<%= article.title %>&body=http%3A%2F%2Flocalhost:3000/articles/<%= article.id %>/"
+                    title="<%= article.title %>">
+                        <span class="share-btn-icon"></span>
+                        <span class="share-btn-text-sr">Email</span>
+	            </a>
+            </div>
         </div>
     </div>
 
@@ -57,15 +92,7 @@
             <div class='showdown-area'>
                 <%- text %>
             </div>
-            <div class='like-grid'>
-                <a href='/articles/<%= article.id%>/like'><i class="fas fa-heart 
-                    <% if(user.likedArticles.includes(article.id)) {%>
-                    <%= 'liked-art' %>
-                    <% } %>
-                    "></i></a>
-                <span class='likes-count'><%= `LIKES: ${article.readersLiked.length}`%></span>
-                
-            </div>
+            
             <div class='tags-grid'>
                 <% article.tags.forEach(element => { %>
                     <div class="tag-elem-div"><a href="/tags/<%= element %>"class="tag-elem"> <%= element%></a></div>
@@ -74,7 +101,7 @@
         </div>
         <% if(article.comments.length) { %>
             <h2 class='response-title'>Responses<%= `(${article.comments.length})` %></h2>
-            <div class='comments-list-grid'>
+            <div class='comments-list-grid' id= '#all-comments'>
             <% article.comments.forEach(elem => { %>
                 <div class='single-comment'>
                     <div class="comment-content-div">
