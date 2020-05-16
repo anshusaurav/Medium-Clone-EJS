@@ -16,8 +16,13 @@ header {
   width: 100%;
   height: 64px;
   z-index: 10;
+  padding: 0 8rem;
   background: #ececec;
   /* margin-bottom: 2rem; */
+}
+.index-page-cnt{
+  width: 1080px;
+  margin: 0 auto;
 }
 .footer-text{
   text-align: center;
@@ -57,6 +62,9 @@ footer{
   line-height: 32px;
   text-align: center;
   font-size: 12px;
+}
+.button:focus{
+  outline: none;
 }
 
 a{
@@ -183,7 +191,8 @@ a{
   margin: 0 2rem;
 }
 .tags-grid{
-  margin: 2rem auto;  
+  margin: 1rem 1.5rem;
+  margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
   
@@ -294,6 +303,37 @@ a{
   transition: all 0.2s ease-in-out;
   background-color:rgba(255,0, 0,0.15);
 }
+.like-animate:active{
+  
+    -webkit-animation: animBg 2s ease 1 alternate 0s forwards;
+    animation: animBg 2s ease 1 alternate 0s forwards;
+
+}
+
+
+@-webkit-keyframes animBg {
+  0% {
+  }
+  50% {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+  100% {
+  }
+}
+
+@keyframes animBg {
+  0% {
+  }
+  50% {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+  100% {
+  }
+	
+}
+
 .left-special{
   width: 60%;
   display: grid;

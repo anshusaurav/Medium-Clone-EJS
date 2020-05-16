@@ -339,8 +339,8 @@ a{
   font-size: 32px;
   font-weight: 700;
   float: left;
-  /* line-height: 67px; */
-  margin-top:12px;
+  line-height: 67px;
+  /* margin-top:12px; */
   color: #000;
   margin-left: 20px;
   font-family: 'EB Garamond', serif;

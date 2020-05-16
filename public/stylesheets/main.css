@@ -296,12 +296,13 @@ h4{
 .comments-list-grid{
   display: grid;
   grid-gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 1rem 1.5rem;
+  margin-top: 0;
 }
 .single-comment{
   /* border-radius: 12px; */
-  min-width: 50%;
-  max-width: 50%;
+  /* min-width: 50%;
+  max-width: 50%; */
   border: 1px solid #595959;
   padding: 0.75rem;
   background: #111;
@@ -379,15 +380,16 @@ h4{
   transition: all 0.2s ease-in-out;
 }
 .comment-form{
-  min-width: 50%;
-  max-width: 50%;
+  /* min-width: 50%; */
+  /* max-width: 50%; */
 }
 .comment-area{
-  width: 100%;
+  /* width: 100%; */
   min-height: 80px;
   border-radius: 0px;
   box-sizing: border-box;
-  padding: 0.5rem;
+  padding: 0.5rem 0.35rem;
+  margin: 0 1.5rem;
 }
 .comment-author-input{
   height: 32px;
@@ -402,6 +404,7 @@ h4{
 #comment-btn{
   max-height: 34px;
   padding: 6px 15px;
+  margin: 0 1.5rem;
 }
 .comment-flex-col-2{
   margin-top: 1rem;
@@ -484,7 +487,8 @@ h4{
   font-size: 28px;
 }
 .response-title{
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 1.5rem;
+  margin-top: 0;
 }
 
 .article-auth-link:hover{
