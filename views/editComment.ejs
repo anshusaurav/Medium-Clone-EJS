@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+
+<div class="container">
+<form class="edit-action-form" action="/articles/<%= article.id %>/comments/<%= comment.id %>/edit" method="POST"> 
+    <textarea class="comment-area" name="content" required> <%=comment.content %>
+    </textarea>
+    <div class="comment-flex-col-2">
+        <input id="comment-btn" type="submit" value="Save Comment">
+    </div>
+</form>
+<div class="grid-col-3">
+    <a href='/articles/<%=article.id %>'><i title="Back" class="fas fa-backward"></i></a>
+</div>
+</div>
+<%- include('partials/footer') -%>

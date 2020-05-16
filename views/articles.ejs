@@ -1,0 +1,55 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <p class='welcome-p'>Welcome to <%= title %></p>
+    <div class='article-home-grid'>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/articles/list'><h3>All Articles</h3></a>
+            </div>
+        </div>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fas fa-pen"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/articles/new'> <h3>Publish Article</h3></a>
+            </div>
+        </div>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fab fa-slack-hash"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/tags'> <h3>Find By Tags</h3></a>
+            </div>
+        </div>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fas fa-user-edit"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/articles/self'><h3>My Articles</h3></a>
+            </div>
+        </div>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/articles/liked'><h3>Liked Articles</h3></a>
+            </div>
+        </div>
+        <div class='article-home-elem'>
+            <div class='article-home-first'>
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class='article-home-sec'>
+                <a class='nav-link' href='/articles/popular'><h3>Popular Articles</h3></a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

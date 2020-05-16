@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Alt-Pages</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/stylesheets/prism.css"/>
+    <script src="https://kit.fontawesome.com/f4ce9ea80b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="/javascripts/main.js" defer></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  
+    
+  </head>
+  <body>
+    <header>
+      <a href='/'><p class='header-links' id='logo-p'>Alt-Pages</p></a>
+      <% if(isUser){ %>
+        <a href="/users/logout"><div class="button header-links"> Sign out </div></a>
+        <a href="/users/<%=user.id %>"><div class="button header-links"><i class="far fa-user"></i> <%= user.name.split(' ')[0] %></div></a>
+      <% } else { %>
+        <a href="/users/register"><div class="button header-links">Sign Up</div></a>
+        <a href="/users/login"><div class="button header-links">Sign In</div></a>
+      <% } %>
+    </header>
+    

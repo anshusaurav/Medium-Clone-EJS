@@ -1,0 +1,19 @@
+<%- include('partials/header') -%>
+<div class="container">
+<% if(tags.length) { %>
+    <div class='tags-grid'>
+        <% tags.forEach(element => { %>
+            <div class="tag-elem-div">
+                <a href="/tags/<%= element.tagname %>" class="tag-elem"><span class='hash-mark'>#</span> <%= `${element.tagname}`%></a>
+            </div>
+        <% }); %>
+    </div>
+    
+<% } else { %>
+ <h1 class='text-align-center'>No tags for now. Come back later</h1>
+<% } %> 
+    <div class="grid-col-3">
+        <a href='/articles'><i title="Back" class="fas fa-backward"></i></a>
+    </div>
+</div>
+<%- include('partials/footer') -%>

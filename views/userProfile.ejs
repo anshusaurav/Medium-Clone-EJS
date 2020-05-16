@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Alt-Pages</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css"/>
+    <script src="https://kit.fontawesome.com/f4ce9ea80b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
+    
+  </head>
+  <body>
+    <header>
+      <a class='icon-logo' href='/'><p class='header-links' id='logo-p'>Alt-Pages</p></a>
+      <% if(isUser){ %>
+        <a href="/users/logout"><div class="button header-links"> Sign out </div></a>
+        <a href="/articles"><div class="button header-links">HOME</div></a>
+      <% } else { %>
+        <a href="/users/register"><div class="button header-links">Sign Up</div></a>
+        <a href="/users/login"><div class="button header-links">Sign In</div></a>
+      <% } %>
+    </header>
+    
+    <div class="profile-container">
+    <div class="profilecontent">
+      <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= visitor.avatar %>"/></div>
+      <h1 class='name-profile text-align-center'><%= visitor.name %></h1>
+      <h2 class='bio-profile'>
+        <%= visitor.bio %>
+      </h2>
+      <% if(visitor.id !== user.id) { %>
+        <% if(visitor.followers.includes(user.id)) { %>
+          <a href="/users/<%= visitor.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+        <% } else {%>
+          <a href="/users/<%= visitor.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+        <% } %>
+      <% } %>
+      <div class="button-container">
+        <a id=ArticleCount>
+          <%= visitor.articles.length %>
+          <h4 class='profile-heading'>Articles</h4>
+        </a>
+        <a id=Followers>
+          <%= visitor.followers.length %>
+          <h4 class='profile-heading'>Followers</h4>
+        </a>
+        <a id=Following>
+          <%= visitor.following.length %>
+          <h4 class='profile-heading'>Following</h4>
+        </a>
+      </div>
+    </div>
+    <div class=contentcontainer>
+      
+      <div id=Articles_title><h3>Articles</h3></div>
+      <div class='photos'>
+        <% visitor.articles.forEach((elem) => { %>
+          <a href='/articles/<%=elem.id%>' class='profile-article-elem'>
+            <p class='profile-article-elem-tit'><%=elem.title %></p>
+            <p class='profile-article-elem-dt'><%= elem.updatedAt.toString().substr(4, 7)%></p>
+          </a>
+        <% });%>
+        
+      </div>
+      
+    </div>
+    <% if(user.id === visitor.id) { %>
+      <div class='profile-edit-div'>
+        <a href='/users/<%= visitor.id %>/edit'>Edit Profile
+        </a>
+      </div>
+    <% } %>
+  </div>
+  <footer>
+    <p class='footer-text'>&copy Anshu Saurabh</p>
+  </footer>
+  </body>
+  </html>

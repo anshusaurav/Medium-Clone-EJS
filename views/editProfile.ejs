@@ -1,0 +1,90 @@
+<html lang = "en">
+<head>
+  <title>Alt-Pages :: Edit Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=divice-width,initial-scale=1.0">
+  
+  <link rel="stylesheet" href="/stylesheets/css_editprofile.css"/>
+</head>
+<body>
+    
+  <form action="/users/<%= user.id %>/edit" enctype="multipart/form-data" method="POST">
+    <div class="edit-profile-wrapper">
+      <h1 class='text-align-center'>Edit Profile</h1>
+      <div class="edit-profile-content">
+        <div class="edit-profile-left-Column">
+            <fieldset>
+            <legend>Profile Picture</legend>
+            <div class='profile-picture-edit'>  
+            <img class='edit-profile-res-img' src="/data/uploads/<%= user.avatar %>" alt=""/>
+            </div>
+            <br>
+            
+            <label for="myPic">Upload Picture</label>
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="showMyImageViaUpload(this)"> 
+            </center>
+            </fieldset>
+        </div>
+        <div class="edit-profile-right-Column">
+          <fieldset>
+          <legend>Profile Information</legend>
+          <div class='edit-profile-internal'>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="myBName" required value ="<%= user.name %>">
+          </div>
+          <div class='edit-profile-internal'>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="myBName" required value ="<%= user.email %>">
+          </div>
+          <div class='edit-profile-internal'>
+            <label for="bio">Bio</label>
+            <textarea type="text" name="bio" id="myBio" placeholder= "" /><%= user.bio %></textarea>
+
+          </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class = "edit-profile-bottom">
+        <center><input type="submit" value="Save Changes"/></center>
+      </div>
+    </div>
+  </form>
+  <script>
+    function showMyImageViaUpload(fileInput) {
+        var files = fileInput.files;
+        for (var i = 0; i < files.length; i++) {           
+            var file = files[i];
+            var imageType = /image.*/;     
+            if (!file.type.match(imageType)) {
+                continue;
+            }           
+            var img=document.querySelector("img");              
+            var reader = new FileReader();
+            reader.onload = (function(aImg) { 
+                return function(e) { 
+                    aImg.src = e.target.result; 
+                }; 
+            })(img);
+            reader.readAsDataURL(file);
+        }    
+    }
+
+    function handleKeyDown(event) {
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    }
+    function showMyImageViaURL(fileInput) {
+
+      console.log(this.value);
+      var img=document.querySelector("img");    
+      let imgSrc = fileInput.value.trim();     
+      console.dir(img);   
+      img.src = imgSrc;
+      fileInput.value = imgSrc;
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.edit-profile-wrapper{
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.edit-profile-content{
+  min-height: 400px;
+  max-height: 400px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 2rem;
+}
+.edit-profile-internal {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  margin: 1rem 4rem;
+}
+.edit-profile-res-img{
+  width: 50%;
+}
+
+.profile-picture-edit{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.or-p{
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+.edit-profile-left-Column >fieldset, .edit-profile-right-Column >fieldset{
+  min-height: 400px;
+  max-height: 400px;
+  height: 400px;
+}
+
+.edit-profile-bottom{
+  margin: 2rem 0;
+}
+
+.text-align-center{
+  text-align: center;
+}

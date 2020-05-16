@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+<div class="container">
+<form class="edit-action-form" action="/comments/<%= comment.id %>/edit" method="POST"> 
+    <textarea class="comment-area" name="content"><%=comment.content %>
+    </textarea>
+    <div class="comment-flex-col-2">
+        <input type="text" class="comment-author-input" name="author" placeholder="Reader's name" value="<%= comment.author %>" readonly/>
+        <input id="comment-btn" type="submit" value="Update Response">
+    </div>
+</form>
+<div class="grid-col-3">
+    <a href='/articles/<%=comment.articleId %>'><i title="Back" class="fas fa-backward"></i></a>
+</div>
+</div>
+<%- include('partials/footer') -%>

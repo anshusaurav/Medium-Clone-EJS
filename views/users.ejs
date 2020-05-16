@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login-Signup</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    
+      <div class="flashes">
+        <% if(locals.message){ %>
+            <% console.log('Client: ', JSON.stringify(locals.message)) %>
+             <% if(locals.message.Success) { %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Success</strong> <%=message.Success[0]%>
+                </div>
+            <% } else {%>
+                <div class="alert alert-error" role="alert">
+                    <strong>Failure</strong> <%=message.Error[0]%>
+                </div>
+      
+            <% } %>
+        <% } %>
+      </div>
+      <h2>Inside main</h2>
+  </body>
+  
+</html>

@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Muli', sans-serif;
+}
+body {
+  
+  min-height: 100vh;
+  background: #EBF5FC;
+}
+
+
+header {
+  width: 100%;
+  height: 64px;
+  background: #ececec;
+  /* margin-bottom: 2rem; */
+}
+.footer-text{
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+  text-transform: uppercase;
+  font-family: 'Muli', sans-serif;
+}
+footer{
+  /* margin-top: 1rem; */
+  width: 100%;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ececec;
+  
+}
+.container{
+  min-height: 90vh;
+}
+.header-links{
+  text-decoration: none;
+}
+
+.button {
+  text-transform: uppercase;
+  width: 96px;
+  height: 32px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  float: right;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-weight: 600;
+  color: #000;
+  line-height: 32px;
+  text-align: center;
+  font-size: 12px;
+}
+
+a{
+  text-decoration: none;
+}
+.button:hover {
+  color: #40A4e8;
+  border: 2px solid #0080ff;
+}
+
+#logo-p {
+  font-size: 32px;
+  font-weight: 600;
+  float: left;
+  line-height: 67px;
+  color: #000;
+  margin-left: 20px;
+  font-family: 'EB Garamond', serif;
+}
+.form-container{
+  margin: 0 auto;
+  margin-top: 1.5rem; 
+  width: 400px;
+  height: auto;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  position: relative;
+  width: 350px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background: #ebf5fc;
+  text-align: center;
+  box-shadow: -5px -5px 5px #717171, 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.form h2 {
+  color: #32a3b1;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+.form .input {
+  margin-top: 16px;
+  text-align: left;
+}
+.form .input .inputBox {
+  margin-top: 16px;
+}
+.form .input .inputBox label {
+  display: block;
+  color: #868686;
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+.form .input .inputBox input, .oauth-github, .oauth-fb {
+  width: 100%;
+  height: 50px;
+  color: #4CAF50;
+  background: #ebf5fc;
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  font-size: 18px;
+  border-bottom:1px solid #4CAF50;
+
+}
+.form .input .inputBox input[type="submit"], .oauth-github, .oauth-fb {
+  margin-top: 20px;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 1),
+    2px 2px 6px rgba(0, 0, 0, 0.1);
+  border-bottom:none;
+  
+}
+.form .input .inputBox input[type="submit"]:active, .oauth-github:active, .oauth-fb:active{
+  color: #006c9c;
+  margin-top: 20px;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 1),
+    inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.oauth-github, .oauth-fb{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.oauth-login-i{
+  margin-right: 4px;
+  font-size: 24px;
+  color: black;
+}
+
+.form .input .inputBox input::placeholder {
+  color: #bdcada;
+  font-size: 18px;
+}
+.forget {
+  margin-top: 30px;
+  color: #555;
+}
+.forget a {
+  color: #4CAF50;
+}
+.alert-success{
+  color: green;
+  background: rgb(159, 215, 255);
+  transition: all 0.25s ease-in-out;
+}
+.alert-error{
+  color: red;
+  background: rgb(159, 215, 255);
+  transition: all 0.25s ease-in-out;
+}
+
+.nav-link{
+  margin: 0 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tags-grid-wrapper{
+  margin: 0 2rem;
+}
+.tags-grid{
+  margin: 2rem auto;  
+  display: flex;
+  flex-wrap: wrap;
+  
+  /* grid-template-columns: repeat(auto-fill, minmax(180px, 1fr) ); 
+  grid-auto-rows: 32px;
+  grid-gap: 16px; */
+
+}
+.tags-grid-wrapper > .tags-grid{
+  justify-content: center;  
+}
+.tag-elem-div{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 6px 16px; 
+  margin:0 0.5rem; 
+  margin-bottom: 1rem;
+  background-color: #D6D9E0;
+  color: #717171;
+  
+}
+.tag-elem-div:hover{
+  background-color: #6bc6d9;
+  cursor: pointer;
+}
+.tag-elem{
+  color: black;
+  cursor: pointer; 
+  background: transparent;
+}
+.hash-mark{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+}
+.home-page-hero{
+  font-family: 'EB Garamond', serif;
+  font-size: 72px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 2.5px;
+  line-height: 8rem;
+
+}
+.home-page-sub-hero{
+  font-family: 'EB Garamond', serif;
+  font-size: 36px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 6rem;
+}
+.home-page-hero-no-tag{
+  font-size: 24px;
+}
