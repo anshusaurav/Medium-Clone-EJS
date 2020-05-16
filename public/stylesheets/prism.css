@@ -36,8 +36,10 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  pre[class*="language-"] {
      padding: 1em;
      margin: .5em 0;
-     overflow: auto;
-     margin: 1rem auto;
+     /* overflow: auto; */
+     width: 100%;
+     margin: 1rem 0;
+     
  }
  
  :not(pre) > code[class*="language-"],
@@ -47,7 +49,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  -moz-box-shadow: 9px 11px 36px -4px rgba(0,0,0,0.75);
  box-shadow: 9px 11px 36px -4px rgba(0,0,0,0.75);
      font-size: .9rem;
-     border-radius: 10px;
+     /* border-radius: 10px; */
  }
  
  /* Inline code */

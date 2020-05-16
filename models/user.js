@@ -16,6 +16,9 @@ var userSchema = new Schema({
         type: String,
         trim: true
     },
+    github_oauth:{
+        type:String
+    },
     fb_oauth:{
         type: String,
     },

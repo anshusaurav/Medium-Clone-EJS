@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require("../models/user");
 var Article = require("../models/article");
 var multer  = require('multer')
+var bcrypt = require("bcrypt");
 var upload = multer({ dest: './public/data/uploads/' })
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -195,6 +196,7 @@ router.get('/:id/edit', function(req, res, next){
       return res.render('login');  
   }
 });
+
 router.post('/:id/edit',upload.single('avatar'),function(req, res, next){
   let id  = req.params.id;
   //console.log(req.body);
@@ -219,6 +221,58 @@ router.post('/:id/edit',upload.single('avatar'),function(req, res, next){
       req.flash('Error', 'Please login to continue')
       res.locals.message = req.flash();
       return res.render('login');  
+  }
+});
+router.get('/:id/changepassword', function (req, res, next){
+  let id  = req.params.id;
+  if(req.session.userId && req.session.userId === id){
+    User.findById(req.session.userId, (err, user) => {
+      if(err)
+        return next(err);
+      return  res.render('changepassword',{user: user, isUser: true});
+    });
+    // return res.render('changepassword')
+  }
+  else {
+    req.flash('Error', 'Please login to continue')
+    res.locals.message = req.flash();
+    return res.render('login');  
+  }
+});
+
+router.post('/:id/changepassword', function (req, res, next){
+  let id  = req.params.id;
+  let oldpass = req.body.oldpassword;
+  
+  
+  if(req.session.userId && req.session.userId === id){
+    console.log('HEREAREWE: ', oldpass);
+    User.findById(req.session.userId, (err, user) => {
+      if(err)
+        return next(err);
+      console.log(user);
+      if(bcrypt.compareSync(oldpass, user.password)) {
+        console.log('Old password matches');
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        User.findByIdAndUpdate(req.session.userId, req.body, {new:true},(err, user) =>{
+          if(err)
+            return next(err);
+          console.log(user);
+          return res.redirect(`/users/${id}`);
+        });
+      } else {
+        req.flash('Error', 'Old Password is wrong')
+        res.locals.message = req.flash();
+        return res.render('changepassword',{user: user, isUser: true});
+      }
+      
+    });
+    // return res.render('changepassword')
+  }
+  else {
+    req.flash('Error', 'Please login to continue')
+    res.locals.message = req.flash();
+    return res.render('login');  
   }
 });
 module.exports = router;

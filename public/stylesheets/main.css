@@ -183,10 +183,11 @@ textarea:focus{
 }
 .article-page-title-container{
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .article-page-title{
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 36px;
   letter-spacing: 2px;
   font-family: 'Playfair Display', serif;

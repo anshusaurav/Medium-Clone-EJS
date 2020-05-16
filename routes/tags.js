@@ -38,7 +38,7 @@ router.get('/:tagname', function(req, res, next){
                 .exec((err, articles) =>{
                     if(err)
                         return next(err);
-                    return res.render('allArticle', {articles:articles, user: user, isUser: true, title: 'Tag Related Articles' });
+                    return res.render('allArticle', {articles:articles, user: user, isUser: true, title: `Posts related to #${tagname}` });
             });
         });
     }

@@ -5,7 +5,7 @@
   --light-black: #555555;
   --blue: #1c5d99;
   --green: #639fab;
-  --periwinkle: #bbcde5;
+  --periwinkle: #FAFAFA;
 }
 a{
   text-decoration: none;
@@ -343,7 +343,7 @@ a{
   margin-top:12px;
   color: #000;
   margin-left: 20px;
-  font-family: 'Arvo', serif;
+  font-family: 'EB Garamond', serif;
 }
 
 

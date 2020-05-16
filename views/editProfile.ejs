@@ -2,7 +2,6 @@
 <head>
   <title>Medium -Get smarted about what matters to you</title>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=divice-width,initial-scale=1.0">
   <link rel="shortcut icon" type="image/png" href="/images/medium-favicon.png"/>
   <link rel="stylesheet" href="/stylesheets/css_editprofile.css"/>
@@ -36,6 +35,10 @@
           <div class='edit-profile-internal'>
             <label for="email">Email</label>
             <input type="text" name="email" id="myBName" required value ="<%= user.email %>">
+          </div>
+          <div class='edit-profile-internal'>
+            <label for="changepassword">Change Password</label>
+            <a href='/users/<%= user.id%>/changepassword' >Click here to change password</a>
           </div>
           <div class='edit-profile-internal'>
             <label for="bio">Bio</label>
