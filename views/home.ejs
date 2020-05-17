@@ -14,7 +14,7 @@
             <div class='article-page-title-author-div'>
                 <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
                 <div class='article-page-grid-user-follow article-page-author'>
-                    <a href = "/users/<%=elem.author.id%>"class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                    <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
                     <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
                     <div class='article-author-fol-div com-view-art-follow'>
                         <% if(elem.author.id !== user.id) { %>
@@ -39,7 +39,7 @@
             <div class='misc-grid'>
                 <div class='left-special like-left-special'>
                     <div>
-                        <a href='/articles/<%= elem.id%>/like' class='like-link like-animate'> 
+                        <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
                             <img class="img-like 
                                 <% if(user.likedArticles.includes(elem.id)) {%>
                                 <%= 'liked-art' %>
@@ -51,8 +51,8 @@
                 </div>
                 <div class='left-special comment-left-special'>
                     <div>
-                        <a href='/articles/<%=elem.id%>#allcomments' class='like-link'> 
-                            <i class="fas fa-comment-alt comment-sp"></i>
+                        <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                            <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
                         </a>
                     </div>
                     <span class='likes-count'><%= `${elem.comments.length}`%></span>
@@ -85,13 +85,13 @@
                 <div class='network-articles-grid'>
                     <% fArticles.forEach(elem =>{ %>
                     <div class='network-articles-elem'>
-                        <h2 class='single-heading network-article-title'>
+                        <a href="/articles/<%= elem.id %>/" class='single-heading network-article-title'>
                             <%= elem.title %>
-                        </h2>
+                        </a>
                         <div class='article-page-title-author-div'>
                             <div class="profilepic"><img class="responsive-img" src="/data/uploads/avatar"/></div>
                             <div class='article-page-grid-user-follow article-page-author'>
-                                <a href = "#"class='article-auth-grid-elem article-auth-link network-auth-name'><%= elem.author.name%></a> 
+                                <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link network-auth-name'><%= elem.author.name%></a> 
                                 <span class='article-update-displ-grid-elem article-update-displ network-auth-date'><%=elem.updatedAt.toString().substr(4,11) %> </span>
                                 
                                 <div class='article-author-fol-div com-view-art-follow'>

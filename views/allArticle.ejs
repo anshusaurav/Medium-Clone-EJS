@@ -34,20 +34,20 @@
             <div class='misc-grid'>
                 <div class='left-special like-left-special'>
                     <div>
-                        <a href='/articles/<%= elem.id%>/like' class='like-link like-animate'> 
+                        <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
                             <img class="img-like 
                                 <% if(user.likedArticles.includes(elem.id)) {%>
                                 <%= 'liked-art' %>
                                 <% } %>
                             " src='/images/like-img.png'/>
                         </a>
-                    </div>
+                    </div>  
                     <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
                 </div>
                 <div class='left-special comment-left-special'>
                     <div>
-                        <a href='/articles/<%=elem.id%>#allcomments' class='like-link'> 
-                            <i class="fas fa-comment-alt comment-sp"></i>
+                        <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                            <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
                         </a>
                     </div>
                     <span class='likes-count'><%= `${elem.comments.length}`%></span>

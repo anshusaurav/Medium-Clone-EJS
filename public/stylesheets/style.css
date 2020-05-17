@@ -213,6 +213,11 @@ a{
   grid-template-columns: 120px 120px 1fr;
   grid-auto-rows: 40px;
 }
+.like-link-smaller{
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 28px !important;
+}
 .tags-grid-wrapper > .tags-grid{
   justify-content: center;  
 }
