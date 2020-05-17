@@ -198,7 +198,7 @@ a{
   margin: 0 2rem;
 }
 .tags-grid{
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
@@ -207,6 +207,11 @@ a{
   grid-auto-rows: 32px;
   grid-gap: 16px; */
 
+}
+.misc-grid{
+  display: grid;
+  grid-template-columns: 120px 120px 1fr;
+  grid-auto-rows: 40px;
 }
 .tags-grid-wrapper > .tags-grid{
   justify-content: center;  
@@ -310,7 +315,7 @@ a{
   transition: all 0.2s ease-in-out;
   background-color:rgba(255,0, 0,0.15);
 }
-.like-animate:active{
+.like-animate:focus{
   
     -webkit-animation: animBg 2s ease 1 alternate 0s forwards;
     animation: animBg 2s ease 1 alternate 0s forwards;
@@ -346,9 +351,11 @@ a{
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin: 1rem auto;
   max-width: 100%;
   
+}
+.auto-margin{
+  margin: 1rem auto;
 }
 .twitter-share-left-special{
   width: 60%;
@@ -673,9 +680,10 @@ a{
 
 .showdown-area{
   padding: 0 1.5rem;
-  margin-top: 0.75rem;
-  letter-spacing: 0.5px;
-  word-spacing: 1px;
+  margin: 0.75rem 0;
+  letter-spacing: 0.4px;
+  word-spacing: 0.75px;
+  line-height: 1.8;
 }
 .showdown-area > *{
   overflow-wrap:break-word;

@@ -2,7 +2,6 @@ var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 var Article = require("../models/article");
-var Comment = require("../models/comment");
 var Tag = require("../models/tag");
 var User = require("../models/user");
 /* GET home page. */
@@ -23,6 +22,35 @@ router.get('/', function(req, res) {
     else
       return res.render('index', {tags: tags,isUser: false});
   });
+});
+
+
+router.get('/home', function(req, res){
+  Article.find({})
+        .populate('author')
+        .exec((err, articles) =>{
+        if(err)
+            return next(err);
+        if(req.session.userId){
+            User.findById(req.session.userId, (err, user) => {
+                if(err)
+                    return next(err);
+                articles.sort((a,b) => b.updatedAt - a.updatedAt);
+                let followedArticles = articles.filter(elem =>{
+                  return user.following.includes(elem.author.id);
+                });
+                console.log('HERE');
+                console.log(followedArticles.length);
+                return res.render('home', {articles: articles, fArticles: followedArticles, user: user, isUser: true, title: 'All Articles'});
+            }) 
+        }
+        else{
+            req.flash('Error', 'Please login to continue')
+            res.locals.message = req.flash();
+            return res.render('login');  
+        } 
+        
+    });
 });
 
 router.get('/auth/github', passport.authenticate('github'));
@@ -46,4 +74,6 @@ router.get('/auth/facebook/callback',
     req.session.userId = req.session.passport.user;
     return res.redirect('/articles');
   });
+
+
 module.exports = router;

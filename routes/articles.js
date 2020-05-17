@@ -36,6 +36,7 @@ router.get('/list', function(req, res, next) {
             User.findById(req.session.userId, (err, user) => {
                 if(err)
                     return next(err);
+                articles.sort((a,b) => b.updatedAt - a.updatedAt);
                 return res.render('allArticle', {articles: articles, user: user, isUser: true, title: 'All Articles'});
             }) 
         }

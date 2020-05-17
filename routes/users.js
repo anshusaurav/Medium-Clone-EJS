@@ -54,9 +54,9 @@ router.post('/login', async function(req, res, next){
   else{
     const match = await user.verifyPassword(password);
     if(match) {
-      // console.log('Login Successful')
+      console.log('Login Successful')
       req.session.userId = user.id;
-      return res.redirect('/articles');
+      return res.redirect('/home');
     }
     else{
       // console.log('Error', 'Invalid password. Please try again');
@@ -109,19 +109,19 @@ router.get('/:id', function(req, res, next) {
 router.get('/:id/follow', function(req, res, next){
   let id  = req.params.id;
   let ref = req.get('Referrer');
+  // console.log(id, req.session.userId);
   if(req.session.userId){
     User.findByIdAndUpdate(id, {$addToSet : {followers : req.session.userId} },{new: true}, (err, visitor) =>{
       if(err)
         return next(err);
       else {
-        User.findByIdAndUpdate(req.session.userId, { $addToSet : { following:req.session.userId } },{new: true}, (err, user) =>{
+        User.findByIdAndUpdate(req.session.userId, { $addToSet : { following:id } },{new: true}, (err, user) =>{
           if(err) 
             return next(err);
           if(ref.includes('users/'))
             return res.redirect(`/users/${id}`);
           else if(ref.includes('articles')) {
             let ind = ref.indexOf('/articles/');
-
             return res.redirect(ref.substr(ind));
           }
           else{
@@ -151,7 +151,7 @@ router.get('/:id/unfollow', function(req, res, next){
       if(err)
         return next(err);
       else {
-        User.findByIdAndUpdate(req.session.userId, {$pull:{following:req.session.userId}},{new: true}, (err, user) =>{
+        User.findByIdAndUpdate(req.session.userId, {$pull:{following:id}},{new: true}, (err, user) =>{
           if(err) 
             return next(err);
             if(ref.includes('users/'))
