@@ -1,0 +1,44 @@
+<%- include('partials/header') -%>
+<div class="container">
+<% if(articles.length) { %>
+<h1 class='text-align-center'><%= title %></h1>
+<div class='article-list-grid'>
+<% articles.forEach(elem => { %>
+    <div class='single'>
+        <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
+        <div class='article-page-title-author-div'>
+            <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+            <div class='article-page-grid-user-follow article-page-author'>
+                <a href = "/users/<%=elem.author.id%>"class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
+                <div class='article-author-fol-div com-view-art-follow'>
+                    <% if(elem.author.id !== user.id) { %>
+                        <% if(elem.author.followers.includes(user.id)) { %>
+                          <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                        <% } else {%>
+                          <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                        <% } %>
+                      <% } %>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class='tags-grid'>
+            <% elem.tags.forEach(element => { %>
+                <div class="tag-elem-div">
+                    <a href="/tags/<%= element %>"class="tag-elem"> <%= element%></a>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <% })%>
+</div>
+<% } else { %>
+<h1 class='text-align-center'>No article for now. Come back later</h1>
+<% } %> 
+    <div class="grid-col-3">
+        <a href='/articles'><i title="Back" class="fas fa-backward"></i></a>
+    </div>
+</div>
+<%- include('partials/footer') -%>

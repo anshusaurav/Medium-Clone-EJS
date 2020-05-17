@@ -1,2 +1,2 @@
-# Clone of Dev.to
-Create a clone of Dev.to
+# Clone of Devto
+Create a clone of Devto

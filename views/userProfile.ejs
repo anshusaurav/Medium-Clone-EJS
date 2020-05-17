@@ -10,18 +10,21 @@
     <script src="https://kit.fontawesome.com/f4ce9ea80b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  
   </head>
   <body>
     <header>
       <a class='icon-logo' href='/'><p class='header-links' id='logo-p'>Medium</p></a>
+      <div class='header-btn-grp'>
       <% if(isUser){ %>
         <a href="/users/logout"><div class="button header-links"> Sign out </div></a>
-        <a href="/articles"><div class="button header-links">HOME</div></a>
+        <a href="/articles"><div class="button header-links ">HOME</div></a>
       <% } else { %>
         <a href="/users/register"><div class="button header-links">Sign Up</div></a>
-        <a href="/users/login"><div class="button header-links">Sign In</div></a>
+        <a href="/users/login"><div class="button header-links ">Sign In</div></a>
       <% } %>
+      </div>
     </header>
     
     <div class="profile-container">

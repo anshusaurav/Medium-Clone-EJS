@@ -45,23 +45,24 @@ a {
   margin: 8px auto;
 }
 .single{
-  border-top: .5px solid #D9D9D9;
-  border-bottom: .5px solid #D9D9D9;
+  border: 1px solid #D9D9D9;
   padding: 1rem;
   box-sizing: border-box;
   /* border-radius: 16px; */
   /* background:var(--blue); */
 }
-.single:hover{
-  border-top: 0.5px solid #9d9d9d;
-  border-bottom: 0.5px solid #9d9d9d;
+.single:hover{  
+  border: 1px solid #9d9d9d;
   transition: all 0.25s ease-in;
+  z-index: 110;
 }
 .single-heading{
   color: #333333;
   margin-bottom: 4px;
 }
-
+.list-container-view{
+  width: 980px;
+}
 
 
 .grid-col-3{
@@ -111,7 +112,8 @@ a {
 }
 .article-list-grid{
   display: grid;
-  /* grid-gap: 1rem; */
+  grid-gap: 1rem;
+  padding: 0.5rem;
 }
 .add-article{
   border-radius: 16px;
@@ -195,7 +197,7 @@ textarea:focus{
 }
 .article-page-title-author-div{
   display: grid;
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 64px auto;
   margin: 0 auto;
 }
 .article-page-author {
@@ -340,9 +342,10 @@ h4{
   font-size: 16px;
   font-weight: 500;
   display: grid;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 64px 8fr;
   justify-content: center;
   align-content: center;
+  grid-gap: 0.5rem;
 }
 .profilepic {
   /* background-image: url(https://cdn.pixabay.com/photo/2016/03/09/09/31/woman-1245840_1280.jpg); */
@@ -379,10 +382,7 @@ h4{
   color: white;
   transition: all 0.2s ease-in-out;
 }
-.comment-form{
-  /* min-width: 50%; */
-  /* max-width: 50%; */
-}
+
 .comment-area{
   /* width: 100%; */
   min-height: 80px;
