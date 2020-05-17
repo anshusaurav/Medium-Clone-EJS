@@ -124,6 +124,9 @@ router.get('/:id/follow', function(req, res, next){
             let ind = ref.indexOf('/articles/');
             return res.redirect(ref.substr(ind));
           }
+          else if(ref.includes('home')) {
+            return res.redirect(ref);
+          }
           else{
             return res.redirect(`/users/${id}`);
           }
@@ -159,6 +162,9 @@ router.get('/:id/unfollow', function(req, res, next){
           else if(ref.includes('articles')) {
             let ind = ref.indexOf('/articles/');
             return res.redirect(ref.substr(ind));
+          }
+          else if(ref.includes('home')) {
+            return res.redirect(ref);
           }
           else{
             return res.redirect(`/users/${id}`);

@@ -193,12 +193,16 @@ router.get('/:id', function(req, res, next) {
             }})
             .populate('author')
             .exec((err, article) =>{   //can add filter, projections and skip
-                var showdown  = require('showdown'),
-                converter = new showdown.Converter(),
-                text      = article.description,
-                html      = converter.makeHtml(text);
-                converter.setFlavor('github');
-                return res.render("viewArticle", {article:article, user:user, isUser: true, text: html});
+                
+                if(article.description) {
+                    var showdown  = require('showdown'),
+                    converter = new showdown.Converter(),
+                    text      = article.description,
+                    html      = converter.makeHtml(text);
+                    converter.setFlavor('github');
+                    return res.render("viewArticle", {article:article, user:user, isUser: true, text: html});
+                }
+                return res.render("viewArticle", {article:article, user:user, isUser: true, text: ''});
             }) 
         });
     }

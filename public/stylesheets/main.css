@@ -89,6 +89,9 @@ a {
   margin-top: 32px;
   box-sizing: content-box;
 }
+#allcomments {
+  margin-left: 1.5rem;
+}
 
 .grid-col-3 > a{
   display: flex;
