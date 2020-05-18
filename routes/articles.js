@@ -37,7 +37,10 @@ router.get('/list', function(req, res, next) {
                 if(err)
                     return next(err);
                 articles.sort((a,b) => b.updatedAt - a.updatedAt);
-                return res.render('allArticle', {articles: articles, user: user, isUser: true, title: 'All Articles'});
+                return res.render('allArticle', 
+                {
+                    articles: articles, user: user, isUser: true, title: 'All Articles'
+                });
             }) 
         }
         else{
@@ -478,6 +481,7 @@ router.get('/:id/delete', function(req, res, next) {
 //like 
 router.get('/:id/like', function(req, res, next) {
     let id = req.params.id;
+    let ref = req.get('Referrer');
     if(req.session.userId){
         User.findById(req.session.userId, (err, user) => {
             if(!user.likedArticles.includes(id)){
@@ -488,9 +492,12 @@ router.get('/:id/like', function(req, res, next) {
                         Article.findByIdAndUpdate(id, {$addToSet : { readersLiked:req.session.userId } },{ new: true }, (err, updatedArticle) =>{
                             if(err)
                                 return next(err);
-                            // console.log(updatedUser);
-                            // console.log(updatedArticle);
-                            res.redirect(`/articles/${id}`);
+                            if(ref.includes('home')) {
+                                return res.redirect(ref);
+                            }
+                            else{
+                                return res.redirect(`/articles/${id}`);
+                            }
                     });
                 })
             }
@@ -502,9 +509,12 @@ router.get('/:id/like', function(req, res, next) {
                         Article.findByIdAndUpdate(id, {$pull : { readersLiked:req.session.userId } },{ new: true }, (err, updatedArticle) =>{
                             if(err)
                                 return next(err);
-                            // console.log(updatedUser);
-                            // console.log(updatedArticle);
-                            res.redirect(`/articles/${id}`);
+                            if(ref.includes('home')) {
+                                return res.redirect(ref);
+                            }
+                            else{
+                                return res.redirect(`/articles/${id}`);
+                            }
                     });
                 })    
             }
