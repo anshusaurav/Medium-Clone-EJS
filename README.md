@@ -1,20 +1,19 @@
 # Clone of Devto
 Create a clone of Devto
 
-# API Spec
-
 ## Endpoints:
 
 ### Authentication:
 
-`POST /api/users/login`
+`POST users/login`
 
 Example request body:
 ```JSON
 {
   "user":{
-    "email": "jake@jake.jake",
-    "password": "jakejake"
+    "email": "jack@email.com",
+    "password": "jackjack",
+    "name": "Jack Black"
   }
 }
 ```

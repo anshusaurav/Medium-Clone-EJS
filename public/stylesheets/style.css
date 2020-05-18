@@ -86,9 +86,14 @@ a{
   font-size: 32px;
   font-weight: 600;
   float: left;
-  line-height: 67px;
-  color: #000;
+  line-height: 40px;
+  color: #fffefe;
+  padding: 0 1rem;
+  background: black;
   margin-left: 20px;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.8rem;
   font-family: 'EB Garamond', serif;
 }
 .form-container{
@@ -204,6 +209,7 @@ a{
   display: flex;
   flex-wrap: wrap;
   
+  margin-top: 0.5rem;
   /* grid-template-columns: repeat(auto-fill, minmax(180px, 1fr) ); 
   grid-auto-rows: 32px;
   grid-gap: 16px; */

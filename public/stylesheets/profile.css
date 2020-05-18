@@ -354,9 +354,14 @@ a{
   font-size: 32px;
   font-weight: 600;
   float: left;
-  line-height: 64px;
-  color: #000;
+  line-height: 40px;
+  color: rgb(255, 255, 255);
+  padding: 0 1rem;
+  background: black;
   margin-left: 20px;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.8rem;
   font-family: 'EB Garamond', serif;
 }
 

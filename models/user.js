@@ -40,7 +40,8 @@ var userSchema = new Schema({
 
     bio: {
         type: String,
-        default:"Add Bio"
+        default:"Add Bio",
+        maxlength: 24
     },
     imageurl: {
         type: String,
