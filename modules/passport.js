@@ -14,7 +14,17 @@ passport.use(new GitHubStrategy({
         return cb(err);
       if(!user){
         console.log('User not found. Creating new');
-        let newUser = {email: profile.emails[0].value, name: profile.displayName, password:"password", github_oauth: profile._json.id}; 
+        let newUser = {
+          email: profile.emails[0].value, 
+          name: profile.displayName, 
+          password:"password", 
+          github_oauth: profile._json.id, 
+          github_profile: {
+            id: profile._json.id, 
+            photo: profile._json.avatar_url, 
+            profile: profile._json.html_url
+          }
+        }; 
         User.create(newUser, (err, user) =>{
           console.log('User created');
           if(err)
@@ -23,8 +33,32 @@ passport.use(new GitHubStrategy({
 
         });
       }
-      else
-        return cb(null, user);
+      else{
+        console.log('hereI am ');
+        github_profile = {
+            id: profile._json.id, 
+            photo: profile._json.avatar_url, 
+            profile: profile._json.html_url
+        }
+        User.findOneAndUpdate(
+          {
+            email : profile.emails[0].value
+          },
+          { 
+            $set : { 
+              github_profile: github_profile,
+              github_oauth: profile._json.id
+            }
+          },
+          (err, updatedUser) => {
+            console.log(updatedUser);
+            if(err)
+              return cb(err);
+            return cb(null, updatedUser);
+          }
+
+        ) 
+      }
       
     }); 
   }
@@ -32,10 +66,11 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
   clientID: process.env.Facebook_Client_ID,
   clientSecret: process.env.Facebook_Client_Secret ,
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  profileFields: ['id', 'displayName', 'email']
 },
 function(accessToken, refreshToken, profile, cb) {
-  // console.log(profile);
+  console.log(profile);
   User.findOne({fb_oauth: profile._json.id }, function (err, user) {
     if(err)
       return cb(err);
@@ -71,7 +106,17 @@ passport.use(new GoogleStrategy({
         return cb(err);
       if(!user){
         console.log('User not found. Creating new');
-        let newUser = {email: profile.emails[0].value, name: profile.displayName, password:"password", google_oauth: profile.id}; 
+        let newUser = {
+          email: profile._json.email, 
+          name: profile._json.name, 
+          password:"password", 
+          google_oauth: profile._json.sub, 
+          google_profile: {
+            sub: profile._json.sub, 
+            picture: profile._json.picture, 
+            
+          }
+        }; 
         User.create(newUser, (err, user) =>{
           console.log('User created');
           if(err)
@@ -80,10 +125,33 @@ passport.use(new GoogleStrategy({
 
         });
       }
-      else
-        return cb(null, user);
+      else{
+        console.log('hereI am ');
+        google_profile = {
+          sub: profile._json.sub, 
+          picture: profile._json.picture, 
+        }
+        User.findOneAndUpdate(
+          {
+            email : profile.emails[0].value
+          },
+          { 
+            $set : { 
+              google_profile: google_profile,
+              google_oauth: profile._json.sub
+            }
+          },
+          (err, updatedUser) => {
+            console.log(updatedUser);
+            if(err)
+              return cb(err);
+            return cb(null, updatedUser);
+          }
+
+        ) 
+      }
       
-    });
+    }); 
   }
 ));
 

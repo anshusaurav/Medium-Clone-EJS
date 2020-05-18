@@ -17,14 +17,27 @@ var userSchema = new Schema({
         trim: true
     },
     github_oauth:{
-        type:String
+        type: String,
     },
     fb_oauth:{
         type: String,
     },
-    github_oauth: {
+    google_oauth: {
         type: String,
     },
+    google_profile:{
+        sub: String,
+        picture: String
+    },
+    fb_profile:{
+
+    },
+    github_profile:{
+      id: String,
+      photo: String, 
+      profile: String, 
+    },
+
     bio: {
         type: String,
         default:"Add Bio"
