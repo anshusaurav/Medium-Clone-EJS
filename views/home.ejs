@@ -4,7 +4,39 @@
     <div class='left-home-div'>
         <div class='left-home-inner-div'>
             <div class='left-home-user-profile'>
-
+                <div>
+                    <div class='new-home-grid'>
+                        <div class="mainprofilepic">
+                            <img class="res-img" src="/data/uploads/<%= user.avatar %>"/>
+                        </div>
+                        <div class='article-page-author author-home-sub-grid'>
+                            <a href="/users/<%=user.id%>" class='article-auth-link main-user-name'>
+                                <%= user.name%>
+                            </a> 
+                            <div class='home-all-sn'>
+                                <a target="_blank" href='<% if(user.github_oauth !== undefined){ %>
+                                            <%=user.github_profile.profile%>
+                                        <% }else {%>
+                                            #
+                                        <% } %>'
+                                   class='github-linkup-home'>
+                                    <i class="fab fa-github-square home-page-ssn
+                                    <% if(user.github_oauth !== undefined){ %>
+                                     darker-ssn
+                                    <% }%>
+                                    "></i>
+                                </a>
+                                <a class='google-linkup-home'>
+                                    <i class="fab fa-google-plus-square home-page-ssn
+                                    <% if(user.google_oauth !== undefined){ %>
+                                        darker-ssn
+                                    <% }%>
+                                    "></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>    
             <div class='left-home-user-options'>
                 <a href='/articles/new' class='left-home-option-elem'>
