@@ -16,7 +16,7 @@
     <a href='/'><p class='header-links' id='logo-p'>Medium</p></a>
     <% if(isUser){ %>
       <a href="/users/<%=user.id %>"><div class="button header-links"> <%= user.name.split(' ')[0] %></div></a>
-      <a href="/articles"><div class="button header-links">Home</div></a>
+      <a href="/home"><div class="button header-links">Home</div></a>
     <% } else { %>
       <a href="/users/register"><div class="button header-links">Sign Up</div></a>
       <a href="/users/login"><div class="button header-links">Sign In</div></a>

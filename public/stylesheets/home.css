@@ -1,6 +1,6 @@
 .home-grid {
     display: grid;
-    grid-template-columns: 1fr 760px 1fr;
+    grid-template-columns: 0.75fr 880px 1fr;
     width: 100%;
 }
 .right-home-div{
@@ -59,4 +59,48 @@
 }
 .network-articles-elem  .pfu{
     font-size: 10px;
+}
+
+.left-home-div{
+    padding: 0.5rem;
+}
+.left-home-inner-div{
+    position: sticky;
+    top: 2rem;
+    padding-top: 2rem;
+}
+.left-home-user-options{
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+    max-width: 100%;
+    /* width: 80%; */
+    min-height: 2rem;
+}
+
+.left-home-option-elem{
+    padding: 0.5rem 1rem;
+    display: grid;
+    /* justify-self: center; */
+    grid-template-columns: 48px auto;
+    cursor: pointer;
+    align-content: center;
+    
+}
+.left-home-option-elem:hover{
+    background-color: rgba(8, 9, 10, 0.05);
+    transition: all 0.2s ease-out;
+}
+.left-home-options-text{
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(8, 9, 10, 0.6);
+    white-space: nowrap; 
+    overflow: none;
+}
+.left-home-option-icon-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

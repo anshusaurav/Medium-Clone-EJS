@@ -60,7 +60,7 @@ router.get('/auth/github/callback', passport.authenticate('github',
     // console.log('Sunny angry');
     console.log(req.session.passport);
     req.session.userId = req.session.passport.user;
-    return res.redirect('/articles');
+    return res.redirect('/home');
   })
 
 router.get('/auth/facebook',
@@ -72,8 +72,17 @@ router.get('/auth/facebook/callback',
     // Successful authentication, redirect home.
     console.log(req.session.passport);
     req.session.userId = req.session.passport.user;
-    return res.redirect('/articles');
+    return res.redirect('/home');
   });
 
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['openid email profile'] }));
+
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    req.session.userId = req.session.passport.user;
+    res.redirect('/home');
+  });
 
 module.exports = router;

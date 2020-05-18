@@ -94,7 +94,7 @@ router.post('/', function(req, res, next) {
         User.findByIdAndUpdate(req.session.userId, {$push: {articles: data.id}}, (err, user) =>{
             if(err)
                 return next(err);
-            return res.redirect('/articles');
+            return res.redirect(`/articles/${data.id}`);
         });
         
     

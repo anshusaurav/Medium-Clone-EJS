@@ -129,7 +129,7 @@ a{
   margin-bottom: 4px;
   font-size: 18px;
 }
-.form .input .inputBox input, .oauth-github, .oauth-fb {
+.form .input .inputBox input, .oauth-github, .oauth-fb, .oauth-google{
   width: 100%;
   height: 50px;
   color: #4CAF50;
@@ -141,21 +141,21 @@ a{
   border-bottom:1px solid #4CAF50;
 
 }
-.form .input .inputBox input[type="submit"], .oauth-github, .oauth-fb {
+.form .input .inputBox input[type="submit"], .oauth-github, .oauth-fb, .oauth-google {
   margin-top: 20px;
   box-shadow: -2px -2px 6px rgba(255, 255, 255, 1),
     2px 2px 6px rgba(0, 0, 0, 0.1);
   border-bottom:none;
   
 }
-.form .input .inputBox input[type="submit"]:active, .oauth-github:active, .oauth-fb:active{
+.form .input .inputBox input[type="submit"]:active, .oauth-github:active, .oauth-fb:active, .oauth-google:active{
   color: #006c9c;
   margin-top: 20px;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 1),
     inset 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.oauth-github, .oauth-fb{
+.oauth-github, .oauth-fb, .oauth-google{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,8 +163,9 @@ a{
 .oauth-login-i{
   margin-right: 4px;
   font-size: 24px;
-  color: black;
+  color: #9147FF
 }
+
 
 .form .input .inputBox input::placeholder {
   color: #bdcada;
