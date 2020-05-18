@@ -57,14 +57,12 @@
     </div>
 
     <div class="container">
-    <% console.log(article) %>
     <div>
         <div class='grid-col-end'>
             <% if(article.author.id === user.id) { %>
                 <a href='/articles/<%= article.id %>/edit'><i title="Edit" class="far fa-edit"></i></a>
                 <a href='/articles/<%= article.id %>/delete'><i title="Delete" class="far fa-trash-alt"></i></a> 
             <% }%>
-            <% console.log(article.author.id + "|" + user.id) %>
         </div>
 
         <div>
@@ -108,7 +106,6 @@
                     <div class="comment-content-div">
                     
                         <p class='comment-text'>&#8220;<%= `${elem.content.trim()}`%>&#8221;</p>
-                        <% console.log(user.id  +'||||||'+ elem.author) %>
                         <% if(user.id == elem.author.id) { %>
                         <a href="/articles/<%= article.id %>/comments/<%= elem.id %>/edit">
                             <i class="far fa-edit art-comment-btn">
@@ -158,6 +155,20 @@
     </div>
 </div>
 <script>
-    
+    // var sdArea = document.querySelector('.showdown-area');
+    // // console.dir(sdArea);
+    // if(sdArea) {
+    //     var descendants = Array.from(sdArea.getElementsByTagName("*"));
+    //     console.log('here');
+    //     console.log(descendants.length);
+    //     descendants.forEach(elem => {
+    //         console.dir(elem);
+    //         if(elem.style.fontSize !== undefined){
+    //             // elem.style.fontSize = elem.style.fontSize*1.5 + 'px';
+    //             console.log(elem.style.fontSize)
+    //         }
+    //     });
+    // }
+
 </script>
 <%- include('partials/footer') -%>

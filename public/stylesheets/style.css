@@ -695,4 +695,32 @@ a{
   overflow-wrap:break-word;
   text-rendering:optimizespeed;
 }
+.showdown-area  p{
+  font-size: 18px;
+}
+.showdown-area  h1{
+  font-size: 36px;
+}
+.showdown-area  h2{
+  font-size: 30px;
+}
+.showdown-area  h3{
+  font-size: 28px;
+}
+
+.showdown-area  h4{
+  font-size: 26px;
+}
+.showdown-area h5{
+  font-size: 24px;
+}
+.showdown-area  h6{
+  font-size: 22px;
+}
+.showdown-area  li{
+  font-size: 16px;
+}
+.showdown-area  ul, ol{
+  font-size: 16px;
+}
 

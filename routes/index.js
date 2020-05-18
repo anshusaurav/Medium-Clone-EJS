@@ -39,8 +39,8 @@ router.get('/home', function(req, res){
                 let followedArticles = articles.filter(elem =>{
                   return user.following.includes(elem.author.id);
                 });
-                console.log('HERE');
-                console.log(followedArticles.length);
+                // console.log('HERE');
+                // console.log(followedArticles.length);
                 return res.render('home', {articles: articles, fArticles: followedArticles, user: user, isUser: true, title: 'All Articles'});
             }) 
         }

@@ -410,7 +410,7 @@ router.post('/:id', function(req, res, next) {
                         }
                     })
                 })
-                return res.redirect('/articles');
+                return res.redirect('/home');
             });
         });
     }
@@ -458,7 +458,7 @@ router.get('/:id/delete', function(req, res, next) {
                     User.updateMany({}, {$pull:{likedArticles:article.id}}, (err, users)=> {
                         if(err)
                             return next(err);
-                        res.redirect('/articles');
+                        res.redirect('/home');
                     });
                     
                 });

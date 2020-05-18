@@ -104,3 +104,18 @@
     justify-content: center;
     align-items: center;
 }
+.write-new-icon{
+    color: #3B49DF;
+}
+.tag-icon{
+    color: #FFD983;
+}
+.liked-icon{
+    color: #DE3039;
+}
+.popular-icon{
+  color: #FE605F;  
+}   
+.left-home-option-icon {
+    font-size: 20px;
+}
