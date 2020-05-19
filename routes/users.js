@@ -26,14 +26,26 @@ router.get('/register', function(req, res, next){
 
 router.post('/register', function(req, res, next){
   // console.log(req.body);
-  User.create(req.body, (err, createdUser) => {
+  User.findOne({email: req.body.email}, (err, foundUser) =>{
     if(err)
       return next(err);
-    // console.log(createdUser, 'after save');
-    req.flash('Success', 'Registeration successful')
-    res.locals.message = req.flash();
-    return res.render('login');
-  });
+    if(foundUser){
+      req.flash('Error', 'Email already registered');
+      res.locals.message = req.flash();
+      return res.render('register');
+    }
+    else{
+      User.create(req.body, (err, createdUser) => {
+        if(err)
+          return next(err);
+        // console.log(createdUser, 'after save');
+        req.flash('Success', 'Registeration successful')
+        res.locals.message = req.flash();
+        return res.redirect('login');
+      });
+    }
+  })
+  
 
 })
 

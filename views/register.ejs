@@ -22,6 +22,21 @@
     </header>
     <div class=form-container>
       <form class="form" action="/users/register" method="POST">
+        <div class="flashes">
+          <% if(locals.message){ %>
+              <% console.log('Client: ', JSON.stringify(locals.message)) %>
+               <% if(locals.message.Success) { %>
+                  <div class="alert alert-success" role="alert">
+                      <%=message.Success[0]%>
+                  </div>
+              <% } else {%>
+                  <div class="alert alert-error" role="alert">
+                      <%=message.Error[0]%>
+                  </div>
+        
+              <% } %>
+          <% } %>
+        </div>
         <h2>Register</h2>
         <div class="input">
           <div class="inputBox">
