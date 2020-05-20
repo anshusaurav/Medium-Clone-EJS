@@ -1,5 +1,21 @@
 <%- include('partials/header') -%>
+<div class="flashes">
+    <script type="text/javascript">window.setTimeout("document.querySelector('.alert').style.display='none';", 2000); </script>
 
+    <% if(locals.message){ %>
+        <% console.log('Client: ', JSON.stringify(locals.message)) %>
+         <% if(locals.message.Success) { %>
+            <div class="alert alert-success" role="alert">
+                <%=message.Success[0]%>
+            </div>
+        <% } else {%>
+            <div class="alert alert-error" role="alert">
+                <%=message.Error[0]%>
+            </div>
+  
+        <% } %>
+    <% } %>
+  </div>   
 <div class='home-grid'>
     <div class='left-home-div'>
         <div class='left-home-inner-div'>
@@ -81,23 +97,7 @@
 
     </div>
     <div class="container list-container-view">
-        <div class="flashes">
-            <script type="text/javascript">window.setTimeout("document.querySelector('.alert').style.display='none';", 2000); </script>
-    
-            <% if(locals.message){ %>
-                <% console.log('Client: ', JSON.stringify(locals.message)) %>
-                 <% if(locals.message.Success) { %>
-                    <div class="alert alert-success" role="alert">
-                        <%=message.Success[0]%>
-                    </div>
-                <% } else {%>
-                    <div class="alert alert-error" role="alert">
-                        <%=message.Error[0]%>
-                    </div>
-          
-                <% } %>
-            <% } %>
-          </div>    
+         
     <% if(articles.length) { %>
     
     <div class='article-list-grid'>

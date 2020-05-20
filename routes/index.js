@@ -73,7 +73,7 @@ router.get('/auth/github/callback', passport.authenticate('github',
         let deletedUser = await User.findByIdAndDelete(req.session.passport.user);
         req.flash('Error', 'Email different please sign in to your github account');
         res.locals.message = req.flash();
-        return res.redirect('home');
+        return res.redirect('/home');
       }
     }
     else{
@@ -101,7 +101,21 @@ router.get('/auth/google',
 
 router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+  async function(req, res) {
+    if(req.session.userId){
+      console.log('already user logged in');
+      //check if req.session.passport.user is same as req.session.userId
+      console.log(req.session.userId, req.session.passport.user);
+      if(req.session.passport.user != req.session.userId) {
+        let deletedUser = await User.findByIdAndDelete(req.session.passport.user);
+        req.flash('Error', 'Email different please sign in to your github account');
+        res.locals.message = req.flash();
+        return res.redirect('/home');
+      }
+    }
+    else{
+      'No user logged in'
+    }
     req.session.userId = req.session.passport.user;
     res.redirect('/home');
   });

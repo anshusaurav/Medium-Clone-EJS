@@ -108,18 +108,21 @@ a{
 }
 .form {
   position: relative;
-  width: 350px;
+  width: 420px;
   padding: 30px 20px;
-  border-radius: 20px;
-  background: #ebf5fc;
+  border-radius: 6px;
+  background: #FAFBFC;
   text-align: center;
-  box-shadow: -5px -5px 5px #717171, 5px 5px 5px rgba(0, 0, 0, 0.1);
+  /* box-shadow: -5px -5px 5px #717171, 5px 5px 5px rgba(0, 0, 0, 0.1); */
 }
 .form h2 {
   color: #32a3b1;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 4px;
+}
+.form-background {
+  background-color: #2B3137;
 }
 .form .input {
   margin-top: 16px;
@@ -134,17 +137,29 @@ a{
   margin-bottom: 4px;
   font-size: 18px;
 }
-.form .input .inputBox input, .oauth-github, .oauth-fb, .oauth-google{
+.form .input .inputBox input[type="text"], .form .input .inputBox input[type="password"], .form .input .inputBox input[type="email"]{
   width: 100%;
   height: 50px;
   color: #4CAF50;
-  background: #ebf5fc;
+  background: white;
   border: none;
+  border-radius: 4px;
   outline: none;
   padding: 5px 15px;
   font-size: 18px;
-  border-bottom:1px solid #4CAF50;
+  /* border-bottom:1px solid #4CAF50; */
 
+}
+.form .input .inputBox input[type="submit"], .oauth-github, .oauth-fb, .oauth-google{
+  width: 100%;
+  height: 50px;
+  color: white;
+  background: #022531;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding: 5px 15px;
+  font-size: 18px;
 }
 .form .input .inputBox input[type="submit"], .oauth-github, .oauth-fb, .oauth-google {
   margin-top: 20px;
