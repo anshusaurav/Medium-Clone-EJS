@@ -173,3 +173,7 @@
     color: rgba(7,8,9,0.8);
     transition: all 0.2s ease-in-out;
 }
+.tag-follow-main-div{
+    margin: 0 auto;
+    overflow-y:auto;
+}
