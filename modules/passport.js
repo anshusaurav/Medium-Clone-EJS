@@ -92,11 +92,10 @@ function(accessToken, refreshToken, profile, cb) {
           email: profile._json.email, 
           name: profile._json.name, 
           password:"password", 
-          fb_oauth: profile._json.id||'', 
+          fb_oauth: profile._json.id ||'', 
           fb_profile: {
-            id: profile._json.id||'', 
-            picture: profile.photos[0].data||'', 
-            
+            id: profile._json.id ||'', 
+            picture: profile.photos[0].data ||'', 
           }
         }; 
         User.create(newUser, (err, user) =>{
@@ -108,19 +107,20 @@ function(accessToken, refreshToken, profile, cb) {
         });
       }
       else{
-        console.log('hereI am ');
-        google_profile = {
-          sub: profile._json.sub, 
-          picture: profile._json.picture, 
+        console.log('here I am ');
+        fb_profile = {
+          id: profile._json.id ||'', 
+          picture: profile.photos[0].data ||'', 
         }
+        console.log(fb_profile);
         User.findOneAndUpdate(
           {
-            email : profile.emails[0].value
+            email : profile._json.email
           },
           { 
             $set : { 
-              google_profile: google_profile,
-              google_oauth: profile._json.sub
+              fb_profile: fb_profile,
+              fb_oauth: profile._json.id
             }
           },
           (err, updatedUser) => {

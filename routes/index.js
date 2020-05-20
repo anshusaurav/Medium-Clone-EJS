@@ -92,7 +92,7 @@ router.get('/auth/facebook',
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
+  async function(req, res) {
     // Successful authentication, redirect home.
     // console.log('Sunny angry');
     if(req.session.userId){

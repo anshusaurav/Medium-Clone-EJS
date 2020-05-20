@@ -139,7 +139,7 @@ a{
   display: block;
   color: #868686;
   margin-bottom: 4px;
-  font-size: 18px;
+  font-size: 12px;
 }
 .form .input .inputBox input[type="text"], .form .input .inputBox input[type="password"], .form .input .inputBox input[type="email"]{
   width: 100%;
