@@ -106,7 +106,46 @@
                 </a>
             </div>
             <div class='tag-follow-main-div'>
+                <div class='followed-tags-outer-div'>
+                    <% if(user.tagsFollowed.length > 0 ) {%>
+                        <div class='followed-tags-inner-div'>
+                            <div class='followed-tags-inner-div-elem'>
+                                <p>My Tags</p>
+                            </div>
+                            <% user.tagsFollowed.forEach(elem =>{ %>
+                            <div class='followed-tags-inner-div-elem'>
+                                <a href='tags/<%=elem.tagname %>'>
+                                    #<%= elem.tagname %>
+                                </a>
+                                <a href='tags/<%=elem.tagname %>/unsubscribe'>
+                                    Unsubscribe
+                                </a>
+                            </div>    
+                            <% }) %>
 
+                        </div>
+                    <% }%>
+                </div>
+                <div class='notfollowed-tags-outer-div'>
+                    <% if(tags) {%>
+                        <div class='followed-tags-inner-div'>
+                            <div class='followed-tags-inner-div-elem'>
+                                <p>Other Popular Tags</p>
+                            </div>
+                            <% tags.forEach(elem =>{ %>
+                            <div class='followed-tags-inner-div-elem'>
+                                <a href='tags/<%=elem.tagname %>'>
+                                    #<%= elem.tagname %>
+                                </a>
+                                <a href='tags/<%=elem.tagname %>/subscribe'>
+                                    Subscribe
+                                </a>
+                            </div>    
+                            <% }) %>
+
+                        </div>
+                    <% }%>
+                </div>
 
             </div>
         </div>

@@ -48,4 +48,53 @@ router.get('/:tagname', function(req, res, next){
             return res.render('login');  
     }
 });
+router.get('/:tagname/subscribe', async(req, res,next) =>{
+    console.log('wsadasdhere');
+    if(req.session.userId){
+        try{
+            var tag = await Tag.findOne({tagname: req.params.tagname});
+            console.log(tagname, req.session.userId)
+            var user = await User.findByIdAndUpdate(
+                req.session.userId, {
+                    $addtoset: {
+                        tagsFollowed: tag.id
+                    }
+                },{new: true});
+            console.log(user);
+            res.redirect('/home');
+        }
+        catch(error){
+            return next(error);
+        }
+    }
+    else{
+        req.flash('Error', 'Please login to continue')
+            res.locals.message = req.flash();
+            return res.render('login');  
+    }
+});
+
+router.get('/:tagname/unsubscribe', async(req, res,next) =>{
+    if(req.session.userId){
+        try{
+            var {tagname} = req.params.tagname;
+            var tag = await Tag.findOne({tagname})
+            var user = await User.findByIdAndUpdate(
+                req.session.userId, {
+                    $pull: {
+                        tagsFollowed: tag.id
+                    }
+                },{new: true});
+            res.redirect('/home');
+        }
+        catch(error){
+            return next(error);
+        }
+    }
+    else{
+        req.flash('Error', 'Please login to continue')
+        res.locals.message = req.flash();
+        return res.render('login');  
+    }
+});
 module.exports = router;

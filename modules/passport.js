@@ -202,7 +202,6 @@ passport.use(new GoogleStrategy({
 
 
 passport.serializeUser((user, cb) => {
-  // console.log(user);
   cb(null, user.id)
 });
 

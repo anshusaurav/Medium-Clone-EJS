@@ -32,23 +32,32 @@ router.get('/home', function(req, res){
         if(err)
             return next(err);
         if(req.session.userId){
-            User.findById(req.session.userId, (err, user) => {
+            User.findById(req.session.userId)
+            .populate('tagsFollowed')
+            .exec((err, user) => {
                 if(err)
-                    return next(err);
+                  return next(err);
                 articles.sort((a,b) => b.updatedAt - a.updatedAt);
                 let followedArticles = articles.filter(elem =>{
                   return user.following.includes(elem.author.id);
                 });
-                return res.render(
-                  'home',
-                  {
-                    articles: articles, 
-                    fArticles: followedArticles, 
-                    user: user, 
-                    isUser: true, 
-                    title: 'All Articles'
-                  }
-                );
+                Tag.find({}, (err, tags) =>{
+                  if(err)
+                    return next(err);
+                  //sort tags by number of articles
+                  return res.render(
+                    'home',
+                    {
+                      articles: articles, 
+                      fArticles: followedArticles, 
+                      user, 
+                      isUser: true, 
+                      title: 'All Articles',
+                      tags
+                    }
+                  );
+                })
+                
             }) 
         }
         else{
