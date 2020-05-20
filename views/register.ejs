@@ -23,6 +23,8 @@
     <div class=form-container>
       <form class="form" action="/users/register" method="POST">
         <div class="flashes">
+          <script type="text/javascript">window.setTimeout("document.querySelector('.alert').style.display='none';", 2000); </script>
+
           <% if(locals.message){ %>
               <% console.log('Client: ', JSON.stringify(locals.message)) %>
                <% if(locals.message.Success) { %>
