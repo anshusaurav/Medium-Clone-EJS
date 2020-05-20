@@ -85,12 +85,30 @@ router.get('/auth/github/callback', passport.authenticate('github',
   })
 
 router.get('/auth/facebook',
-passport.authenticate('facebook'));
+  passport.authenticate('facebook',{
+    scope: ['public_profile', 'email']
+  })
+);
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
+    // console.log('Sunny angry');
+    if(req.session.userId){
+      console.log('already user logged in');
+      //check if req.session.passport.user is same as req.session.userId
+      console.log(req.session.userId, req.session.passport.user);
+      if(req.session.passport.user != req.session.userId) {
+        let deletedUser = await User.findByIdAndDelete(req.session.passport.user);
+        req.flash('Error', 'Email different please sign in to your github account');
+        res.locals.message = req.flash();
+        return res.redirect('/home');
+      }
+    }
+    else{
+      'No user logged in'
+    }
     console.log(req.session.passport);
     req.session.userId = req.session.passport.user;
     return res.redirect('/home');

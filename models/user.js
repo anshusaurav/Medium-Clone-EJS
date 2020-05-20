@@ -30,7 +30,8 @@ var userSchema = new Schema({
         picture: String
     },
     fb_profile:{
-
+        id: String,
+        photo: String,
     },
     github_profile:{
       id: String,

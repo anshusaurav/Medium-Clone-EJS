@@ -42,6 +42,18 @@
                                     <% }%>
                                     "></i>
                                 </a>
+                                <a target="_blank" href='<% if(user.fb_oauth !== undefined){ %>
+                                    #
+                                <% }else {%>
+                                    /auth/facebook
+                                <% } %>'
+                                class='fb-linkup-home'>
+                                    <i class="fab fa-facebook-square home-page-ssn
+                                    <% if(user.fb_oauth !== undefined){ %>
+                                        darker-ssn
+                                    <% }%>
+                                    "></i>
+                                </a>
                                 <a target="_blank" href='<% if(user.google_oauth !== undefined){ %>
                                     #
                                 <% }else {%>
@@ -92,6 +104,10 @@
                         <p class='left-home-options-text'>Popular posts</p>
                     </div>
                 </a>
+            </div>
+            <div class='tag-follow-main-div'>
+
+
             </div>
         </div>
 

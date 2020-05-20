@@ -67,29 +67,74 @@ passport.use(new FacebookStrategy({
   clientID: process.env.Facebook_Client_ID,
   clientSecret: process.env.Facebook_Client_Secret ,
   callbackURL: "http://localhost:3000/auth/facebook/callback",
-  profileFields: ['id', 'displayName', 'email']
+  profileFields: [
+    'id',
+    'email',
+    'gender',
+    'profileUrl',
+    'displayName',
+    'locale',
+    'name',
+    'timezone',
+    'updated_time',
+    'verified',
+    'picture.type(large)',
+  ],
 },
 function(accessToken, refreshToken, profile, cb) {
   console.log(profile);
-  User.findOne({fb_oauth: profile._json.id }, function (err, user) {
-    if(err)
-      return cb(err);
-    if(!user){
-      console.log('User not found. Creating new');
-      let newUser = {fb_oauth: profile._json.id, name: profile._json.name, password:"password"}; 
-      User.create(newUser, (err, user) =>{
-        console.log('User created');
-        if(err)
-          return cb(err);
-        return cb(null, user);
+    User.findOne({ email: profile._json.email }, function (err, user) {
+      if(err)
+        return cb(err);
+      if(!user){
+        console.log('User not found. Creating new');
+        let newUser = {
+          email: profile._json.email, 
+          name: profile._json.name, 
+          password:"password", 
+          fb_oauth: profile._json.id||'', 
+          fb_profile: {
+            id: profile._json.id||'', 
+            picture: profile.photos[0].data||'', 
+            
+          }
+        }; 
+        User.create(newUser, (err, user) =>{
+          console.log('User created');
+          if(err)
+            return cb(err);
+          return cb(null, user);
 
-      });
-    }
-    else
-      return cb(null, user);
-    
-  }); 
-}
+        });
+      }
+      else{
+        console.log('hereI am ');
+        google_profile = {
+          sub: profile._json.sub, 
+          picture: profile._json.picture, 
+        }
+        User.findOneAndUpdate(
+          {
+            email : profile.emails[0].value
+          },
+          { 
+            $set : { 
+              google_profile: google_profile,
+              google_oauth: profile._json.sub
+            }
+          },
+          (err, updatedUser) => {
+            console.log(updatedUser);
+            if(err)
+              return cb(err);
+            return cb(null, updatedUser);
+          }
+
+        ) 
+      }
+      
+    });  
+  }
 ));
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
