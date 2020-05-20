@@ -17,7 +17,7 @@
                                 <a target="_blank" href='<% if(user.github_oauth !== undefined){ %>
                                             <%=user.github_profile.profile%>
                                         <% }else {%>
-                                            #
+                                            /auth/github
                                         <% } %>'
                                    class='github-linkup-home'>
                                     <i class="fab fa-github-square home-page-ssn
@@ -26,7 +26,12 @@
                                     <% }%>
                                     "></i>
                                 </a>
-                                <a class='google-linkup-home'>
+                                <a target="_blank" href='<% if(user.google_oauth !== undefined){ %>
+                                    #
+                                <% }else {%>
+                                    /auth/google
+                                <% } %>'
+                                class='google-linkup-home'>
                                     <i class="fab fa-google-plus-square home-page-ssn
                                     <% if(user.google_oauth !== undefined){ %>
                                         darker-ssn
@@ -76,6 +81,23 @@
 
     </div>
     <div class="container list-container-view">
+        <div class="flashes">
+            <script type="text/javascript">window.setTimeout("document.querySelector('.alert').style.display='none';", 2000); </script>
+    
+            <% if(locals.message){ %>
+                <% console.log('Client: ', JSON.stringify(locals.message)) %>
+                 <% if(locals.message.Success) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%=message.Success[0]%>
+                    </div>
+                <% } else {%>
+                    <div class="alert alert-error" role="alert">
+                        <%=message.Error[0]%>
+                    </div>
+          
+                <% } %>
+            <% } %>
+          </div>    
     <% if(articles.length) { %>
     
     <div class='article-list-grid'>

@@ -8,12 +8,12 @@ passport.use(new GitHubStrategy({
     callbackURL: "/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
+    // console.log(profile);
     User.findOne({ email: profile.emails[0].value }, function (err, user) {
       if(err)
         return cb(err);
       if(!user){
-        console.log('User not found. Creating new');
+        // console.log('User not found. Creating new');
         let newUser = {
           email: profile.emails[0].value, 
           name: profile.displayName, 
@@ -26,7 +26,7 @@ passport.use(new GitHubStrategy({
           }
         }; 
         User.create(newUser, (err, user) =>{
-          console.log('User created');
+          // console.log('User created');
           if(err)
             return cb(err);
           return cb(null, user);
@@ -34,7 +34,7 @@ passport.use(new GitHubStrategy({
         });
       }
       else{
-        console.log('hereI am ');
+        // console.log('hereI am ');
         github_profile = {
             id: profile._json.id, 
             photo: profile._json.avatar_url, 
@@ -51,7 +51,7 @@ passport.use(new GitHubStrategy({
             }
           },
           (err, updatedUser) => {
-            console.log(updatedUser);
+            // console.log(updatedUser);
             if(err)
               return cb(err);
             return cb(null, updatedUser);
