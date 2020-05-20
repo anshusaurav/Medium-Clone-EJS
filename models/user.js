@@ -72,7 +72,11 @@ var userSchema = new Schema({
     following: [{
         type: Schema.Types.ObjectId,
         ref: "User"
-    }]
+    }],
+    tagsFollowed: [{
+        type: String,
+        // ref="Tag"
+    }],
     
 },{timestamps: true});
 

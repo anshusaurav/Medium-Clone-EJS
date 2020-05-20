@@ -206,15 +206,14 @@ h3 {
 }
 .profile-edit-div > a{
   text-decoration: none;
-  color: #b3b3b3;
+  color: #d084f2c4;
   font-family: Lato;
   
 }
 .profile-edit-div > a:hover{
   /* text-decoration: none; */
-  color: #b3b3b3;
-  text-shadow: 0.6px 0.5px 1px rgb(114, 107, 108);
-  transition: all 0.2s ease-in;
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
 }
 #Articles_title {
   margin-top: 0;
