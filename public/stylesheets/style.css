@@ -315,6 +315,53 @@ a{
   font-size: 24px;
 }
 
+.helper-text-index-signin{
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  word-spacing: 0.3px;
+}
+.index-page-links{
+  width: 420px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  text-align: center;
+ 
+  
+}
+.index-singin-div{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  grid-gap: 0.25rem;
+  align-items: baseline;
+}
+.index-signup{
+  width: 120px;
+  height: 36px;
+  background: #03A87C;
+  color: #fafafa;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-family: 'Muli', sans-serif;
+  /* font-size: 18px; */
+  
+}
+#index-signin{
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  font-family: 'Muli', sans-serif;
+  color: #03A87C;
+}
+.index-sinup-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .special-container{
   display: grid;
   width: 100%;

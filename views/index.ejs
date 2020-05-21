@@ -55,14 +55,22 @@
     <% } else { %>
      <h3 class='home-page-hero home-page-hero-no-tag'>No tags for now. Come back later</h3>
     <% } %> 
+    <div>
+      <% if(isUser){ %>
+        <% } else { %>
+        <div class='index-page-links'>
+          <div class='index-sinup-div'>
+            <a href="/users/register"><div class="index-signup">Get Started</div></a>
+          </div>
+          <div class='index-singin-div'>
+            <p class='helper-text-index-signin'>Already have an account?</p>
+            <a href="/users/login"><div id="index-singin">Sign In.</div></a>
+          </div>
+        </div>
+      <% } %>
+    </div>
   </div>
-  <% if(isUser){ %>
-    <a href="/users/<%=user.id %>"><div class="button header-links"> <%= user.name.split(' ')[0] %></div></a>
-    <a href="/home"><div class="button header-links">Home</div></a>
-  <% } else { %>
-    <a href="/users/register"><div class="button header-links">Sign Up</div></a>
-    <a href="/users/login"><div class="button header-links">Sign In</div></a>
-  <% } %>
+  
   <script>
     document.addEventListener('click', toggleTagEventHandler);
     function toggleTagEventHandler(event) {
