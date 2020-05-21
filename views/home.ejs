@@ -156,23 +156,23 @@
         </div>
     </div>
     <div class="container list-container-view">
-    <div class='filter-view-home-list'>
-        <a class='feed-filter-view filter-view-single'>
-            Feed
-        </a>
-        <a class='today-filter-view filter-view-single'>
-            Today
-        </a>
-        <a class='week-filter-view filter-view-single'>
-            Week
-        </a>
-        <a class='infinity-filter-view filter-view-single'>
-            Infinity
-        </a>
-        
-    </div>    
+        <div class='filter-view-home-list'>
+            <a class='feed-filter-view filter-view-single'>
+                Feed
+            </a>
+            <a class='today-filter-view filter-view-single'>
+                Today
+            </a>
+            <a class='week-filter-view filter-view-single'>
+                Week
+            </a>
+            <a class='infinity-filter-view filter-view-single'>
+                Infinity
+            </a>
+            
+        </div>    
     <% if(articles.length) { %>
-    <div class='article-list-grid'>
+    <div class='article-list-grid-infinity filter-view-grid'>
     <% articles.forEach(elem => { %>
         <div class='single'>
             <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>

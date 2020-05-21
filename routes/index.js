@@ -50,13 +50,16 @@ router.get('/home', function(req, res, next){
                 var today = new Date();
                 today.setDate(today.getDate() - 1);
                 let todayArticles = articles.filter(elem =>{
-                    // console.log(elem.updatedAt, isSameDay(today, new Date(elem.updatedAt)));
-                    if(isSameDay(today, new Date(elem.updatedAt)))
-                      return false;
-                    return true;
+                  // console.log(elem.updatedAt, isSameDay(today, new Date(elem.updatedAt)));
+                  if(isSameDay(today, new Date(elem.updatedAt)))
+                    return false;
+                  return true;
                 });
                 let weekArticles = articles.filter(elem =>{
-                    return false;
+                  console.log(isLast7Days(elem));
+                  if(isLast7Days(elem))
+                    return true;
+                  return false;
                 });
                 Tag.find({}, (err, tags) =>{
                   if(err)
@@ -177,7 +180,7 @@ router.get('/auth/google/callback',
     var now = new Date();
     var ts = d.getTime();
     var sevenDays = ts - (7 * 24 * 60 * 60 * 1000);
-    d.setUTCDate(sevenDays);
+    return a.updatedAt >= sevenDays;
     
   }
 module.exports = router;
