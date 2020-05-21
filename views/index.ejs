@@ -60,11 +60,11 @@
         <% } else { %>
         <div class='index-page-links'>
           <div class='index-sinup-div'>
-            <a href="/users/register"><div class="index-signup">Get Started</div></a>
+            <a class='sup-button-index' href="/users/register"><div class="index-signup">Get Started</div></a>
           </div>
           <div class='index-singin-div'>
             <p class='helper-text-index-signin'>Already have an account?</p>
-            <a href="/users/login"><div id="index-singin">Sign In.</div></a>
+            <a href="/users/login"><div class="index-signin">Sign In.</div></a>
           </div>
         </div>
       <% } %>
@@ -72,6 +72,7 @@
   </div>
   
   <script>
+    let arrTags = [];
     document.addEventListener('click', toggleTagEventHandler);
     function toggleTagEventHandler(event) {
       let target = event.target;
@@ -83,7 +84,26 @@
     function highlight(tagelem, elemDiv) {
       tagelem.classList.toggle('tag-elem-selected');
       elemDiv.classList.toggle('tag-elem-div-selected');
+      
+
     }
+    let signupButton = document.querySelector('.sup-button-index');
+    // console.dir(signupButton);
+    if(signupButton) {
+      signupButton.addEventListener('click', updateSessionStorage);
+      console.log('HERE');
+    }
+    async function updateSessionStorage(event) {
+      console.log('HERE');
+      let allSelectedTags = Array.from(document.querySelectorAll('.tag-elem-selected'));
+      let arr = allSelectedTags.map(elem =>{
+        return elem.innerText.split(' ')[1];
+      })
+      var s = await localStorage.setItem('tagsToBeAdded', arr);
+      //let tagList = sessionStorage.getItem('tagsTobeAdded');
+   
+    }
+    
     
 
   </script>

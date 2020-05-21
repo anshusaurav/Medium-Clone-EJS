@@ -274,11 +274,7 @@ a{
   cursor: pointer; 
   background: transparent;
 }
-.tag-elem-selected{
-  /* color: rgba(173, 27, 173, 0.692); */
-  /* background-color: rgba(0, 0, 0, 0.1); */
 
-}
 .tag-elem-div-selected{
   background-color: rgba(12, 242, 143, .2); 
 }
@@ -339,21 +335,24 @@ a{
   align-items: baseline;
 }
 .index-signup{
-  width: 120px;
-  height: 36px;
+  width: 144px;
+  height: 40px;
   background: #03A87C;
   color: #fafafa;
-  padding: 8px 16px;
-  border-radius: 2px;
+  padding: 10px 16px;
+  border-radius: 4px;
   font-weight: 600;
   font-family: 'Muli', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.4px;
   /* font-size: 18px; */
   
 }
-#index-signin{
-  text-decoration: none;
+.index-signin{  
   font-size: 18px;
   letter-spacing: 0.2px;
+  word-spacing: 0.3px;
   font-family: 'Muli', sans-serif;
   color: #03A87C;
 }
