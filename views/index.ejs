@@ -46,7 +46,7 @@
           <div class='tags-grid'>
               <% tags.forEach(element => { %>
                   <div class="tag-elem-div">
-                  <a href="/tags/<%= element.tagname %>" class="tag-elem"><span class='hash-mark'><p>#</p></span> <%= `${element.tagname}`%></a>
+                  <a href="#" class="tag-elem"><span class='hash-mark'><p>#</p></span> <%= `${element.tagname}`%></a>
                   </div>
               <% }); %>
           </div>
@@ -56,6 +56,29 @@
      <h3 class='home-page-hero home-page-hero-no-tag'>No tags for now. Come back later</h3>
     <% } %> 
   </div>
+  <% if(isUser){ %>
+    <a href="/users/<%=user.id %>"><div class="button header-links"> <%= user.name.split(' ')[0] %></div></a>
+    <a href="/home"><div class="button header-links">Home</div></a>
+  <% } else { %>
+    <a href="/users/register"><div class="button header-links">Sign Up</div></a>
+    <a href="/users/login"><div class="button header-links">Sign In</div></a>
+  <% } %>
+  <script>
+    document.addEventListener('click', toggleTagEventHandler);
+    function toggleTagEventHandler(event) {
+      let target = event.target;
+      if(!target.classList.contains('tag-elem'))
+        return;
+      let elemDiv = event.target.closest('.tag-elem-div');
+      highlight(target, elemDiv);
+    }
+    function highlight(tagelem, elemDiv) {
+      tagelem.classList.toggle('tag-elem-selected');
+      elemDiv.classList.toggle('tag-elem-div-selected');
+    }
+    
+
+  </script>
 </main>
 <footer>
   <p class='footer-text'>&copy Anshu Saurabh</p>
