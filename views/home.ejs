@@ -109,17 +109,19 @@
                 <div class='followed-tags-outer-div'>
                     <% if(user.tagsFollowed.length > 0 ) {%>
                         <div class='followed-tags-inner-div'>
-                            <div class='followed-tags-inner-div-elem'>
+                            <div class='followed-tags-inner-div-single'>
                                 <p class='header-follow-tag-home'>My Tags</p>
                             </div>
                             <% user.tagsFollowed.forEach(elem =>{ %>
-                            <div class='followed-tags-inner-div-elem'>
-                                <a href='tags/<%=elem.tagname %>'>
+                            <div class='followed-tags-inner-div-double'>
+                                <a class='home-page-toggle-tag-name' href='tags/<%=elem.tagname %>'>
                                     #<%= elem.tagname %>
                                 </a>
-                                <a href='tags/<%=elem.tagname %>/unsubscribe'>
-                                    Unsubscribe
-                                </a>
+                                <div class='home-page-toggle-div'>
+                                    <a class='home-page-toggle-a' href='tags/<%=elem.tagname %>/unsubscribe'>
+                                        Unsubscribe
+                                    </a>
+                                </div>
                             </div>    
                             <% }) %>
 
@@ -129,19 +131,21 @@
                 <div class='notfollowed-tags-outer-div'>
                     <% if(tags) {%>
                         <div class='followed-tags-inner-div'>
-                            <div class='followed-tags-inner-div-elem'>
+                            <div class='followed-tags-inner-div-single'>
                                 <p class='header-follow-tag-home'>Other Popular Tags</p>
                             </div>
                             <% tags.forEach(elem =>{ %>
                                 <% let result = user.tagsFollowed.map(a => a.id) %>
                                 <% if(!result.includes(elem.id)) {%>
-                                    <div class='followed-tags-inner-div-elem'>
-                                        <a href='tags/<%=elem.tagname %>'>
+                                    <div class='followed-tags-inner-div-double'>
+                                        <a class='home-page-toggle-tag-name' href='tags/<%=elem.tagname %>'>
                                             #<%= elem.tagname %>
                                         </a>
-                                        <a href='tags/<%=elem.tagname %>/subscribe'>
-                                            Subscribe
-                                        </a>
+                                        <div class='home-page-toggle-div'>
+                                            <a class='home-page-toggle-a' href='tags/<%=elem.tagname %>/subscribe'>
+                                                Subscribe
+                                            </a>
+                                        </div>
                                     </div>    
                             <% }}) %>
                         </div>
@@ -261,4 +265,9 @@
         </div>
     </div>
 </div>
+<script>
+    // outer-div  followed-tags-inner-div-double
+    //child home-page-toggle-a should be toggled
+    
+</script>
 <%- include('partials/footer') -%>

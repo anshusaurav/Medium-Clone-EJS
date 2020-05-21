@@ -176,4 +176,39 @@
 .tag-follow-main-div{
     margin: 0 auto;
     overflow-y:auto;
+    font-size: 16px;
+    padding: 0.5rem;
+}
+.header-follow-tag-home{
+    
+    color: #020202;
+    font-weight: 500;
+}
+.followed-tags-inner-div{
+    display: grid;
+    margin: 0 auto;
+}
+.followed-tags-inner-div-double{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.25rem;
+}
+.home-page-toggle-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-page-toggle-a{
+    padding: 0.2px;
+    display: inline-block;
+    background-color: #FE605F;
+    transition: opacity 0.25s ease-in-out;
+}
+.followed-tags-inner-div-double .home-page-toggle-a {
+    visibility: hidden;
+    opacity: 0;
+}
+.followed-tags-inner-div-double:hover .home-page-toggle-a {
+    visibility: visible;
+    opacity: 1;
 }
