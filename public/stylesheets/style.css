@@ -346,11 +346,14 @@ a{
   font-size: 18px;
   letter-spacing: 0.25px;
   word-spacing: 0.4px;
-  /* font-size: 18px; */
+  font-size: 16px;
   
 }
+.sup-button-index{
+  cursor: pointer;
+}
 .index-signin{  
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.2px;
   word-spacing: 0.3px;
   font-family: 'Muli', sans-serif;

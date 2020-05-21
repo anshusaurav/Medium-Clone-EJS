@@ -37,21 +37,40 @@ router.get('/home', function(req, res, next){
             .exec((err, user) => {
                 if(err)
                   return next(err);
-                console.log(user);
+                // console.log(user);
                 articles.sort((a,b) => b.updatedAt - a.updatedAt);
                 let followedArticles = articles.filter(elem =>{
-                  return user.following.includes(elem.author.id);
+                  return (user.following.includes(elem.author.id));
+                  //user.tagsFollowed.filter(value => elem.tags.includes(value));
+                });
+                let feedArticles = articles.filter(elem =>{
+                  return (user.following.includes(elem.author.id)||
+                  user.tagsFollowed.filter(value => elem.tags.includes(value)));
+                });
+                var today = new Date();
+                today.setDate(today.getDate() - 1);
+                let todayArticles = articles.filter(elem =>{
+                    // console.log(elem.updatedAt, isSameDay(today, new Date(elem.updatedAt)));
+                    if(isSameDay(today, new Date(elem.updatedAt)))
+                      return false;
+                    return true;
+                });
+                let weekArticles = articles.filter(elem =>{
+                    return false;
                 });
                 Tag.find({}, (err, tags) =>{
                   if(err)
                     return next(err);
                   //sort tags by number of articles
-                  console.log(tags);
+                  // console.log(tags);
                   return res.render(
                     'home',
                     {
                       articles: articles, 
-                      fArticles: followedArticles, 
+                      fArticles: followedArticles,
+                      feedArticles,
+                      todayArticles,
+                      weekArticles,
                       user, 
                       isUser: true, 
                       title: 'All Articles',
@@ -148,5 +167,17 @@ router.get('/auth/google/callback',
     req.session.userId = req.session.passport.user;
     res.redirect('/home');
   });
-
+  const isSameDay = (a, b) => {
+    return a.getFullYear() === b.getFullYear() &&
+      a.getMonth() === b.getMonth() &&
+      a.getDate()=== b.getDate();
+  }
+  const isLast7Days = (a) => {
+    var d = new Date();
+    var now = new Date();
+    var ts = d.getTime();
+    var sevenDays = ts - (7 * 24 * 60 * 60 * 1000);
+    d.setUTCDate(sevenDays);
+    
+  }
 module.exports = router;

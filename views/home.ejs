@@ -156,9 +156,22 @@
         </div>
     </div>
     <div class="container list-container-view">
-         
+    <div class='filter-view-home-list'>
+        <a class='feed-filter-view filter-view-single'>
+            Feed
+        </a>
+        <a class='today-filter-view filter-view-single'>
+            Today
+        </a>
+        <a class='week-filter-view filter-view-single'>
+            Week
+        </a>
+        <a class='infinity-filter-view filter-view-single'>
+            Infinity
+        </a>
+        
+    </div>    
     <% if(articles.length) { %>
-    
     <div class='article-list-grid'>
     <% articles.forEach(elem => { %>
         <div class='single'>
@@ -267,6 +280,28 @@
     </div>
 </div>
 <script>
+    // var allArticles = articles;
+    // console.log(allArticles);
+    document.querySelector('.infinity-filter-view').classList.toggle('filter-view-single-active');
+
+    document.addEventListener('click', updateListView);
+    function updateListView(event) {
+        let target = event.target;
+        if(!target.classList.contains('filter-view-single'))
+            return;
+        var result = [],node = target.parentNode.firstChild;
+
+        while ( node ) {
+            if ( node !== this && node.nodeType === Node.ELEMENT_NODE ) 
+                result.push( node );
+            node = node.nextElementSibling || node.nextSibling;
+        }
+        result.forEach(elem =>{
+            if(elem.classList.contains('filter-view-single-active'))
+                elem.classList.remove('filter-view-single-active'); 
+        });
+        target.classList.add('filter-view-single-active');
+    }
     // outer-div  followed-tags-inner-div-double
     //child home-page-toggle-a should be toggled
     
