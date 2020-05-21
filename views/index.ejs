@@ -60,7 +60,7 @@
         <% } else { %>
         <div class='index-page-links'>
           <div class='index-sinup-div'>
-            <a class='sup-button-index' href="/users/register"><div class="index-signup">Get Started</div></a>
+            <a class='sup-button-index' ><div class="index-signup">Get Started</div></a>
           </div>
           <div class='index-singin-div'>
             <p class='helper-text-index-signin'>Already have an account?</p>
@@ -99,8 +99,13 @@
       let arr = allSelectedTags.map(elem =>{
         return elem.innerText.split(' ')[1];
       })
-      var s = await localStorage.setItem('tagsToBeAdded', arr);
-      //let tagList = sessionStorage.getItem('tagsTobeAdded');
+      let res = arr.join(', ');
+      console.log(res);
+      var s = await localStorage.setItem('tagsToBeAdded', res);
+      window.open(
+            'users/register',
+            '_blank' 
+          );
    
     }
     

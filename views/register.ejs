@@ -11,9 +11,16 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  
+    
   </head>
   <body class='form-background'>
+    <script>
+      let printTag = async() =>{
+      let x = await localStorage.getItem('tagsToBeFollowed');
+      console.log(x);
+      }
+      printTag();
+    </script>
     <header>
       <a href='/'><p class='header-links' id='logo-p'>Medium</p></a>
     <a href="/users/register"><div class="button header-links">Sign Up</div></a>
@@ -52,6 +59,10 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="*******" required>
           </div>
+          <div>
+            <input id="tags" type="hidden" name="tags" value=''>
+          </div>
+        
           <div class="inputBox">
             <input class='register-submit' type="submit" value="Signup with Email">
           </div>
@@ -78,20 +89,28 @@
       </form>
     </div>
     <script>
-      console.log('Fuck');
-      let getTags = async() =>{
-        var tags = await localStorage.tagsTobeAdded;
-        if(tags)
-          console.log(tags)
-      }
-      getTags();
-      let submitBtn = document.querySelector('.register-submit');
-      submitBtn.addEventListener('click', checkTagsPresent);
-      function checkTagsPresent(event) {
-        let tagList = localStorage.getItem('tagsTobeAdded');
-        if(tagList)
-          console.log(tagList)
-      }
+      document.onreadystatechange  = (function(){
+        return async()=>{
+          var tags = await localStorage.getItem('tagsToBeAdded');
+          var tagElem = document.querySelector('#tags');
+          tagElem.value = tags;
+        }
+      })();
+
+
+      // let getTags = async() =>{
+      //   var tags = await localStorage.tagsTobeAdded;
+      //   if(tags)
+      //     console.log(tags)
+      // }
+      // getTags();
+      // let submitBtn = document.querySelector('.register-submit');
+      // submitBtn.addEventListener('click', checkTagsPresent);
+      // function checkTagsPresent(event) {
+      //   let tagList = localStorage.getItem('tagsTobeAdded');
+      //   if(tagList)
+      //     console.log(tagList)
+      // }
       
 
     </script>

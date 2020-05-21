@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require("../models/user");
-var Article = require("../models/article");
+var Tag = require("../models/tag");
 var multer  = require('multer')
 var bcrypt = require("bcrypt");
 var upload = multer({ dest: './public/data/uploads/' })
@@ -24,8 +24,9 @@ router.get('/register', function(req, res, next){
   res.render('register');
 });
 
-router.post('/register', function(req, res, next){
-  // console.log(req.body);
+router.post('/register', async function(req, res, next){
+  console.log(req.body);
+  
   User.findOne({email: req.body.email}, (err, foundUser) =>{
     if(err)
       return next(err);
@@ -35,6 +36,22 @@ router.post('/register', function(req, res, next){
       return res.render('register');
     }
     else{
+      if(req.body.tags) {
+        var tagArr = req.body.tags.split(', ');
+        console.log(tagArr);
+        var arr = [];
+        tagArr.forEach(tag =>{
+          Tag.findOne({tagname: tag}, (err, foundTag) =>{
+            if(err)
+              return next(err);
+            arr.push(foundTag.id);
+          });
+        });
+        console.log(arr);
+        req.body.tagsFollowed = arr;
+
+      }
+      // req.body.tags =  
       User.create(req.body, (err, createdUser) => {
         if(err)
           return next(err);
