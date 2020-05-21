@@ -94,9 +94,12 @@
           var tags = await localStorage.getItem('tagsToBeAdded');
           var tagElem = document.querySelector('#tags');
           tagElem.value = tags;
+          // 
         }
       })();
-
+      document.querySelector(".form").onsubmit = function onSubmit(form) {
+        localStorage.removeItem('tagsToBeAdded');
+      }
 
       // let getTags = async() =>{
       //   var tags = await localStorage.tagsTobeAdded;

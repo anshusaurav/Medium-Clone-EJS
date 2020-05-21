@@ -114,11 +114,11 @@
                             </div>
                             <% user.tagsFollowed.forEach(elem =>{ %>
                             <div class='followed-tags-inner-div-double'>
-                                <a class='home-page-toggle-tag-name' href='tags/<%=elem.tagname %>'>
-                                    #<%= elem.tagname %>
+                                <a class='home-page-toggle-tag-name' href='tags/<%=elem %>'>
+                                    #<%= elem %>
                                 </a>
                                 <div class='home-page-toggle-div'>
-                                    <a class='home-page-toggle-a' href='tags/<%=elem.tagname %>/unsubscribe'>
+                                    <a class='home-page-toggle-a' href='tags/<%=elem %>/unsubscribe'>
                                         Unsubscribe
                                     </a>
                                 </div>
@@ -129,7 +129,7 @@
                     <% }%>
                 </div>
                 <div class='notfollowed-tags-outer-div'>
-                    <% if(tags) {%>
+                    <% if(tags.length > 0) {%>
                         <div class='followed-tags-inner-div'>
                             <div class='followed-tags-inner-div-single'>
                                 <p class='header-follow-tag-home'>Other Popular Tags</p>
