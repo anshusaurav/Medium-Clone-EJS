@@ -52,7 +52,7 @@ router.get('/:tagname/subscribe', async(req, res,next) =>{
     if(req.session.userId){
         try{
             var tag = await Tag.findOne({tagname: req.params.tagname});
-            var user = await User.findByIdAndUpdate(req.session.userId, {$addToSet: {tagsFollowed: tag.id}});
+            var user = await User.findByIdAndUpdate(req.session.userId, {$addToSet: {tagsFollowed: req.params.tagname}});
             return res.redirect('/home');
         }
         catch(error){
@@ -71,7 +71,7 @@ router.get('/:tagname/unsubscribe', async(req, res,next) =>{
         try{
             var tagname = req.params.tagname;
             var tag = await Tag.findOne({tagname})
-            var user = await User.findByIdAndUpdate(req.session.userId, {$pull: {tagsFollowed: tag.id}});
+            var user = await User.findByIdAndUpdate(req.session.userId, {$pull: {tagsFollowed: tagname}});
             res.redirect('/home');
         }
         catch(error){

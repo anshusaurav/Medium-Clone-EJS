@@ -25,7 +25,8 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/home', function(req, res){
+router.get('/home', function(req, res, next){
+  console.log('HRERE');
   Article.find({})
         .populate('author')
         .exec((err, articles) =>{
@@ -33,10 +34,10 @@ router.get('/home', function(req, res){
             return next(err);
         if(req.session.userId){
             User.findById(req.session.userId)
-            .populate('tagsFollowed')
             .exec((err, user) => {
                 if(err)
                   return next(err);
+                console.log(user);
                 articles.sort((a,b) => b.updatedAt - a.updatedAt);
                 let followedArticles = articles.filter(elem =>{
                   return user.following.includes(elem.author.id);
@@ -45,6 +46,7 @@ router.get('/home', function(req, res){
                   if(err)
                     return next(err);
                   //sort tags by number of articles
+                  console.log(tags);
                   return res.render(
                     'home',
                     {
@@ -53,7 +55,7 @@ router.get('/home', function(req, res){
                       user, 
                       isUser: true, 
                       title: 'All Articles',
-                      tags
+                      tags: tags
                     }
                   );
                 })

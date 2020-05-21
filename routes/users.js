@@ -40,16 +40,7 @@ router.post('/register', async function(req, res, next){
         var tagArr = req.body.tags.split(', ');
         console.log(tagArr);
         var arr = [];
-        tagArr.forEach(tag =>{
-          Tag.findOne({tagname: tag}, (err, foundTag) =>{
-            if(err)
-              return next(err);
-            arr.push(foundTag.id);
-          });
-        });
-        console.log(arr);
-        req.body.tagsFollowed = arr;
-
+        req.body.tagsFollowed = tagArr;
       }
       // req.body.tags =  
       User.create(req.body, (err, createdUser) => {

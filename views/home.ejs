@@ -135,8 +135,9 @@
                                 <p class='header-follow-tag-home'>Other Popular Tags</p>
                             </div>
                             <% tags.forEach(elem =>{ %>
-                                <% let result = user.tagsFollowed.map(a => a.id) %>
-                                <% if(!result.includes(elem.id)) {%>
+                                <% let result = user.tagsFollowed %>
+                                <% console.log(result) %>
+                                <% if(!result.includes(elem.tagname)) {%>
                                     <div class='followed-tags-inner-div-double'>
                                         <a class='home-page-toggle-tag-name' href='tags/<%=elem.tagname %>'>
                                             #<%= elem.tagname %>
