@@ -814,7 +814,9 @@ a{
 
 
 /* Dropdown */
-
+.dropdown a{
+  text-decoration: none;
+}
 .dropdown {
   display: inline-block;
   position: relative;
@@ -836,19 +838,19 @@ a{
   cursor: pointer;
   white-space: nowrap;
   border-radius: 50%;
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 .dd-button:hover{
-  opacity: 1.0;
-  transform:scale(1.05);
+  /* opacity: 1.0; */
+  /* transform:scale(1.05); */
   transition: all 0.25s ease-in-out;
 }
 
 .dd-button:after {
-  
+  content:'';
   position: absolute;
   top: 50%;
-  right: 15px;
+  right: -15px;
   transform: translateY(-50%);
   width: 0; 
   height: 0; 
@@ -866,24 +868,45 @@ a{
   display: none;
   border: none;
 }
-
-.dd-menu {
+.dd-menu-div{
   position: absolute;
   top: 100%;
+  margin-top: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
   background-color: #ffffff;
+}
+.dd-button:after {
+  position: absolute;
+  top: 107%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  transform: rotate(180deg);
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+  display: none;
+}
+.dd-menu {
   list-style-type: none;
 }
 
-.dd-input + .dd-menu {
+.dd-input + .dd-menu-div {
   display: none;
 } 
 
-.dd-input:checked + .dd-menu {
+.dd-input:checked + .dd-menu-div {
   display: block;
 } 
+.dd-input:checked + .dd-button:after{
+  display: block;
+}
 
 .dd-menu li {
   padding: 10px 20px;
@@ -897,8 +920,11 @@ a{
 
 .dd-menu li a {
   display: block;
-  margin: -10px -20px;
+  margin: -10px 10px;
   padding: 10px 20px;
+  color: rgb(82, 76, 76);
+  font-family: 'Muli', sans-serif;
+  font-size: 16px;
 }
 
 .dd-menu li.divider{

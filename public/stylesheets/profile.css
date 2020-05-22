@@ -391,13 +391,13 @@ a{
   border: 1px solid gray;
   border-radius: 4px;
   /* padding: 10px; */
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   cursor: pointer;
   white-space: nowrap;
   border-radius: 50%;
 }
 .dropdown a{
-
+  font-family: 'Muli', sans-serif;
   text-decoration: none;
   color: rgb(82, 76, 76);
 }
@@ -461,8 +461,11 @@ a{
 
 .dd-menu li a {
   display: block;
-  margin: -10px -20px;
+  margin: -10px 10px;
   padding: 10px 20px;
+  color: rgb(82, 76, 76);
+  font-family: 'Muli', sans-serif;
+  font-size: 16px;
 }
 
 .dd-menu li.divider{
