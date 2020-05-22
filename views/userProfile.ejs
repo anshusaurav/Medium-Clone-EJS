@@ -18,8 +18,33 @@
       <a class='icon-logo' href='/'><p class='header-links' id='logo-p'>Medium</p></a>
       <div class='header-btn-grp'>
       <% if(isUser){ %>
-        <a href="/users/logout"><div class="button header-links"> Sign out </div></a>
-        <a href="/home"><div class="button header-links ">HOME</div></a>
+        <label class="dropdown">
+
+          <div class="dd-button">
+            <img class="profile-pic-header" src="<% if(user.avatar === 'avatar' && (user.github_oauth ||user.google_oauth)) { %> 
+              <% if(user.github_oauth) { %>
+                  <%= user.github_profile.photo %>
+              <%} else if(user.google_oauth) { %>
+                  <%= user.google_profile.picture %>
+              <% } %>   
+              <%} else { %>
+                  <%= `/data/uploads/${user.avatar}`%>
+              <%} %>              
+            "/>
+          </div>
+        
+          <input type="checkbox" class="dd-input" id="test">
+        
+          <ul class="dd-menu">
+            <li><a href="/users/<%=user.id %>">Profile</a></li>
+            <li><a href="/home">Home</a></li>
+            <li class="divider"></li>
+            <li>
+              <a href="/users/logout">Logout</a>
+            </li>
+          </ul>
+          
+        </label>  
       <% } else { %>
         <a href="/users/register"><div class="button header-links">Sign Up</div></a>
         <a href="/users/login"><div class="button header-links ">Sign In</div></a>
