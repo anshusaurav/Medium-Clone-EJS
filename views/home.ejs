@@ -171,8 +171,9 @@
             </a>
             
         </div>  
+        <div class='filter-view-grid'>
         <% if(feedArticles.length) { %>
-            <div class='article-list-grid-feed filter-view-grid'>
+            <div class='article-list-grid-feed'>
             <% feedArticles.forEach(elem => { %>
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
@@ -226,12 +227,13 @@
                 </div>
                 <% })%>
             </div>
-        <% } else { %>
-            <h1 class='text-align-center feed-view-heading filter-view-heading'>No article for now. Come back later</h1>
-        <% } %>
-            
+            <% } else { %>
+                <h1 class='text-align-center feed-view-heading filter-view-heading'>No article for now. Come back later</h1>
+            <% } %>
+        </div>    
+        <div class='filter-view-grid'>
         <% if(todayArticles.length) { %>
-            <div class='article-list-grid-today filter-view-grid'>
+            <div class='article-list-grid-today'>
             <% todayArticles.forEach(elem => { %>
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
@@ -288,9 +290,10 @@
         <% } else { %>
             <h1 class='text-align-center today-view-heading filter-view-heading'>No article for now. Come back later</h1>
         <% } %>
-
+        </div>
+        <div class='filter-view-grid'>
         <% if(weekArticles.length) { %>
-            <div class='article-list-grid-week filter-view-grid'>
+            <div class='article-list-grid-week'>
             <% feedArticles.forEach(elem => { %>
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
@@ -347,12 +350,12 @@
         <% } else { %>
             <h1 class='text-align-center week-view-heading filter-view-heading'>No article for now. Come back later</h1>
         <% } %>
+        </div>
 
 
-
-
+        <div class='filter-view-grid'>
         <% if(articles.length) { %>
-        <div class='article-list-grid-infinity filter-view-grid'>
+        <div class='article-list-grid-infinity'>
         <% articles.forEach(elem => { %>
             <div class='single'>
                 <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
@@ -409,7 +412,7 @@
         <% } else { %>
         <h1 class='text-align-center inifity-view-heading filter-view-heading'>No article for now. Come back later</h1>
         <% } %> 
-        
+        </div>
     </div>
     <div class='right-home-div'>
         <div class='right-home-inner-div'>
@@ -469,7 +472,7 @@
     screens.forEach(elem =>{
         elem.style.display='none';
     });
-    screens[3].style.display = 'grid';
+    screens[3].style.display = 'block';
     
     document.addEventListener('click', updateListView);
     function updateListView(event) {
@@ -494,7 +497,7 @@
         screens.forEach(elem =>{
             elem.style.display='none';
         });
-        screens[index].style.display = 'grid';
+        screens[index].style.display = 'block';
 
         target.classList.add('filter-view-single-active');
     }
