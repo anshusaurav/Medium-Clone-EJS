@@ -170,65 +170,245 @@
                 Infinity
             </a>
             
-        </div>    
-    <% if(articles.length) { %>
-    <div class='article-list-grid-infinity filter-view-grid'>
-    <% articles.forEach(elem => { %>
-        <div class='single'>
-            <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
-            <div class='article-page-title-author-div'>
-                <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
-                <div class='article-page-grid-user-follow article-page-author'>
-                    <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
-                    <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
-                    <div class='article-author-fol-div com-view-art-follow'>
-                        <% if(elem.author.id !== user.id) { %>
-                            <% if(elem.author.followers.includes(user.id)) { %>
-                            <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
-                            <% } else {%>
-                            <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
-                            <% } %>
-                        <% } %>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class='tags-grid'>
-                <% elem.tags.forEach(element => { %>
-                    <div class="tag-elem-div">
-                        <a href="/tags/<%= element %>"class="tag-elem"> #<%= element%></a>
-                    </div>
-                <% }); %>
-            </div>
-            <div class='misc-grid'>
-                <div class='left-special like-left-special'>
-                    <div>
-                        <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
-                            <img class="img-like 
-                                <% if(user.likedArticles.includes(elem.id)) {%>
-                                <%= 'liked-art' %>
+        </div>  
+        <% if(feedArticles.length) { %>
+            <div class='article-list-grid-feed filter-view-grid'>
+            <% feedArticles.forEach(elem => { %>
+                <div class='single'>
+                    <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
+                    <div class='article-page-title-author-div'>
+                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class='article-page-grid-user-follow article-page-author'>
+                            <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                            <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
+                            <div class='article-author-fol-div com-view-art-follow'>
+                                <% if(elem.author.id !== user.id) { %>
+                                    <% if(elem.author.followers.includes(user.id)) { %>
+                                    <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                    <% } else {%>
+                                    <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                                    <% } %>
                                 <% } %>
-                            " src='/images/like-img.png'/>
-                        </a>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
+                    
+                    <div class='tags-grid'>
+                        <% elem.tags.forEach(element => { %>
+                            <div class="tag-elem-div">
+                                <a href="/tags/<%= element %>"class="tag-elem"> #<%= element%></a>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <div class='misc-grid'>
+                        <div class='left-special like-left-special'>
+                            <div>
+                                <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
+                                    <img class="img-like 
+                                        <% if(user.likedArticles.includes(elem.id)) {%>
+                                        <%= 'liked-art' %>
+                                        <% } %>
+                                    " src='/images/like-img.png'/>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
+                        </div>
+                        <div class='left-special comment-left-special'>
+                            <div>
+                                <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                                    <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.comments.length}`%></span>
+                        </div>
+                    </div>
                 </div>
-                <div class='left-special comment-left-special'>
-                    <div>
-                        <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
-                            <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
-                        </a>
+                <% })%>
+            </div>
+        <% } else { %>
+            <h1 class='text-align-center feed-view-heading filter-view-heading'>No article for now. Come back later</h1>
+        <% } %>
+            
+        <% if(todayArticles.length) { %>
+            <div class='article-list-grid-today filter-view-grid'>
+            <% todayArticles.forEach(elem => { %>
+                <div class='single'>
+                    <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
+                    <div class='article-page-title-author-div'>
+                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class='article-page-grid-user-follow article-page-author'>
+                            <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                            <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
+                            <div class='article-author-fol-div com-view-art-follow'>
+                                <% if(elem.author.id !== user.id) { %>
+                                    <% if(elem.author.followers.includes(user.id)) { %>
+                                    <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                    <% } else {%>
+                                    <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                                    <% } %>
+                                <% } %>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <span class='likes-count'><%= `${elem.comments.length}`%></span>
+                    
+                    <div class='tags-grid'>
+                        <% elem.tags.forEach(element => { %>
+                            <div class="tag-elem-div">
+                                <a href="/tags/<%= element %>"class="tag-elem"> #<%= element%></a>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <div class='misc-grid'>
+                        <div class='left-special like-left-special'>
+                            <div>
+                                <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
+                                    <img class="img-like 
+                                        <% if(user.likedArticles.includes(elem.id)) {%>
+                                        <%= 'liked-art' %>
+                                        <% } %>
+                                    " src='/images/like-img.png'/>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
+                        </div>
+                        <div class='left-special comment-left-special'>
+                            <div>
+                                <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                                    <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.comments.length}`%></span>
+                        </div>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+        <% } else { %>
+            <h1 class='text-align-center today-view-heading filter-view-heading'>No article for now. Come back later</h1>
+        <% } %>
+
+        <% if(weekArticles.length) { %>
+            <div class='article-list-grid-week filter-view-grid'>
+            <% feedArticles.forEach(elem => { %>
+                <div class='single'>
+                    <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
+                    <div class='article-page-title-author-div'>
+                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class='article-page-grid-user-follow article-page-author'>
+                            <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                            <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
+                            <div class='article-author-fol-div com-view-art-follow'>
+                                <% if(elem.author.id !== user.id) { %>
+                                    <% if(elem.author.followers.includes(user.id)) { %>
+                                    <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                    <% } else {%>
+                                    <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                                    <% } %>
+                                <% } %>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class='tags-grid'>
+                        <% elem.tags.forEach(element => { %>
+                            <div class="tag-elem-div">
+                                <a href="/tags/<%= element %>"class="tag-elem"> #<%= element%></a>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <div class='misc-grid'>
+                        <div class='left-special like-left-special'>
+                            <div>
+                                <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
+                                    <img class="img-like 
+                                        <% if(user.likedArticles.includes(elem.id)) {%>
+                                        <%= 'liked-art' %>
+                                        <% } %>
+                                    " src='/images/like-img.png'/>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
+                        </div>
+                        <div class='left-special comment-left-special'>
+                            <div>
+                                <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                                    <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
+                                </a>
+                            </div>
+                            <span class='likes-count'><%= `${elem.comments.length}`%></span>
+                        </div>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+        <% } else { %>
+            <h1 class='text-align-center week-view-heading filter-view-heading'>No article for now. Come back later</h1>
+        <% } %>
+
+
+
+
+        <% if(articles.length) { %>
+        <div class='article-list-grid-infinity filter-view-grid'>
+        <% articles.forEach(elem => { %>
+            <div class='single'>
+                <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
+                <div class='article-page-title-author-div'>
+                    <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                    <div class='article-page-grid-user-follow article-page-author'>
+                        <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
+                        <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
+                        <div class='article-author-fol-div com-view-art-follow'>
+                            <% if(elem.author.id !== user.id) { %>
+                                <% if(elem.author.followers.includes(user.id)) { %>
+                                <a href="/users/<%= elem.author.id %>/unfollow" class='pfu profile-follow-user'>Following</a>
+                                <% } else {%>
+                                <a href="/users/<%= elem.author.id %>/follow" class='pfu profile-unfollow-user'>Follow</a>
+                                <% } %>
+                            <% } %>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='tags-grid'>
+                    <% elem.tags.forEach(element => { %>
+                        <div class="tag-elem-div">
+                            <a href="/tags/<%= element %>"class="tag-elem"> #<%= element%></a>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class='misc-grid'>
+                    <div class='left-special like-left-special'>
+                        <div>
+                            <a href='/articles/<%= elem.id%>/like' class='like-link like-animate like-link-smaller'> 
+                                <img class="img-like 
+                                    <% if(user.likedArticles.includes(elem.id)) {%>
+                                    <%= 'liked-art' %>
+                                    <% } %>
+                                " src='/images/like-img.png'/>
+                            </a>
+                        </div>
+                        <span class='likes-count'><%= `${elem.readersLiked.length}`%></span>
+                    </div>
+                    <div class='left-special comment-left-special'>
+                        <div>
+                            <a href='/articles/<%=elem.id%>#allcomments' class='like-link '> 
+                                <i class="fas fa-comment-alt comment-sp like-link-smaller"></i>
+                            </a>
+                        </div>
+                        <span class='likes-count'><%= `${elem.comments.length}`%></span>
+                    </div>
                 </div>
             </div>
+            <% })%>
         </div>
-        <% })%>
-    </div>
-    <% } else { %>
-    <h1 class='text-align-center'>No article for now. Come back later</h1>
-    <% } %> 
+        <% } else { %>
+        <h1 class='text-align-center inifity-view-heading filter-view-heading'>No article for now. Come back later</h1>
+        <% } %> 
         
     </div>
     <div class='right-home-div'>
@@ -283,7 +463,14 @@
     // var allArticles = articles;
     // console.log(allArticles);
     document.querySelector('.infinity-filter-view').classList.toggle('filter-view-single-active');
-
+    
+    
+    var screens = Array.from(document.querySelectorAll('.filter-view-grid'));
+    screens.forEach(elem =>{
+        elem.style.display='none';
+    });
+    screens[3].style.display = 'grid';
+    
     document.addEventListener('click', updateListView);
     function updateListView(event) {
         let target = event.target;
@@ -296,10 +483,19 @@
                 result.push( node );
             node = node.nextElementSibling || node.nextSibling;
         }
-        result.forEach(elem =>{
+        var index = 0;
+        result.forEach((elem,ind) =>{
+            if(target === elem)
+                index = ind;
             if(elem.classList.contains('filter-view-single-active'))
                 elem.classList.remove('filter-view-single-active'); 
         });
+        console.log(index);
+        screens.forEach(elem =>{
+            elem.style.display='none';
+        });
+        screens[index].style.display = 'grid';
+
         target.classList.add('filter-view-single-active');
     }
     // outer-div  followed-tags-inner-div-double

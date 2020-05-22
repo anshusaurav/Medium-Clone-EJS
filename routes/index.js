@@ -44,9 +44,12 @@ router.get('/home', function(req, res, next){
                   //user.tagsFollowed.filter(value => elem.tags.includes(value));
                 });
                 let feedArticles = articles.filter(elem =>{
-                  return (user.following.includes(elem.author.id)||
-                  user.tagsFollowed.filter(value => elem.tags.includes(value)));
+                  console.log(elem.tags,  user.tagsFollowed.filter(value => elem.tags.includes(value)));
+                  if(user.following.includes(elem.author.id)||(user.tagsFollowed.filter(value => elem.tags.includes(value)).length > 0))
+                    return true;
+                  return false;
                 });
+                console.log('feedarticles', feedArticles.length);
                 var today = new Date();
                 today.setDate(today.getDate() - 1);
                 let todayArticles = articles.filter(elem =>{
@@ -55,12 +58,14 @@ router.get('/home', function(req, res, next){
                     return false;
                   return true;
                 });
+                console.log('todayArticles', todayArticles.length);
                 let weekArticles = articles.filter(elem =>{
-                  console.log(isLast7Days(elem));
+                  console.log(elem.updatedAt, isLast7Days(elem));
                   if(isLast7Days(elem))
                     return true;
                   return false;
                 });
+                console.log('weekArticles', weekArticles.length);
                 Tag.find({}, (err, tags) =>{
                   if(err)
                     return next(err);
