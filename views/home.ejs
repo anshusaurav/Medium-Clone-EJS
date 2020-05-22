@@ -23,7 +23,16 @@
                 <div>
                     <div class='new-home-grid'>
                         <div class="mainprofilepic">
-                            <img class="res-img" src="/data/uploads/<%= user.avatar %>"/>
+                            <img class="res-img" src="<% if(user.avatar === 'avatar' && (user.github_oauth ||user.google_oauth)) { %> 
+                                                            <% if(user.github_oauth) { %>
+                                                                <%= user.github_profile.photo %>
+                                                            <%} else if(user.google_oauth) { %>
+                                                                <%= user.google_profile.picture %>
+                                                            <% } %>   
+                                                        <%} else { %>
+                                                            <%= `/data/uploads/${user.avatar}`%>
+                                                        <%} %>              
+                            "/>
                         </div>
                         <div class='article-page-author author-home-sub-grid'>
                             <a href="/users/<%=user.id%>" class='article-auth-link main-user-name'>
@@ -178,7 +187,16 @@
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>
-                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                            <% if(elem.author.github_oauth) { %>
+                                <%= elem.author.github_profile.photo %>
+                            <%} else if(elem.author.google_oauth) { %>
+                                <%= elem.author.google_profile.picture %>
+                            <% } %>   
+                        <%} else { %>
+                            <%= `/data/uploads/${elem.author.avatar}`%>
+                        <%} %>              
+"/></div>
                         <div class='article-page-grid-user-follow article-page-author'>
                             <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
                             <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
@@ -238,7 +256,16 @@
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>
-                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                            <% if(elem.author.github_oauth) { %>
+                                <%= elem.author.github_profile.photo %>
+                            <%} else if(elem.author.google_oauth) { %>
+                                <%= elem.author.google_profile.picture %>
+                            <% } %>   
+                        <%} else { %>
+                            <%= `/data/uploads/${elem.author.avatar}`%>
+                        <%} %>              
+                        "/></div>
                         <div class='article-page-grid-user-follow article-page-author'>
                             <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
                             <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
@@ -298,7 +325,16 @@
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>
-                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                            <% if(elem.author.github_oauth) { %>
+                                <%= elem.author.github_profile.photo %>
+                            <%} else if(elem.author.google_oauth) { %>
+                                <%= elem.author.google_profile.picture %>
+                            <% } %>   
+                        <%} else { %>
+                            <%= `/data/uploads/${elem.author.avatar}`%>
+                        <%} %>              
+                        "/></div>
                         <div class='article-page-grid-user-follow article-page-author'>
                             <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
                             <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
@@ -360,7 +396,16 @@
             <div class='single'>
                 <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                 <div class='article-page-title-author-div'>
-                    <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                    <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                        <% if(elem.author.github_oauth) { %>
+                            <%= elem.author.github_profile.photo %>
+                        <%} else if(elem.author.google_oauth) { %>
+                            <%= elem.author.google_profile.picture %>
+                        <% } %>   
+                        <%} else { %>
+                            <%= `/data/uploads/${elem.author.avatar}`%>
+                        <%} %>              
+                    "/></div>
                     <div class='article-page-grid-user-follow article-page-author'>
                         <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link'><%= elem.author.name%></a> 
                         <span class='article-update-displ-grid-elem article-update-displ'><%= elem.updatedAt.toString().substr(4,11) %></span>
@@ -437,7 +482,16 @@
                             <%= elem.title %>
                         </a>
                         <div class='article-page-title-author-div'>
-                            <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                            <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                                <% if(elem.author.github_oauth) { %>
+                                    <%= elem.author.github_profile.photo %>
+                                <%} else if(elem.author.google_oauth) { %>
+                                    <%= elem.author.google_profile.picture %>
+                                <% } %>   
+                            <%} else { %>
+                                <%= `/data/uploads/${elem.author.avatar}`%>
+                            <%} %>              
+                            "/></div>
                             <div class='article-page-grid-user-follow article-page-author'>
                                 <a href="/users/<%=elem.author.id%>" class='article-auth-grid-elem article-auth-link network-auth-name'><%= elem.author.name%></a> 
                                 <span class='article-update-displ-grid-elem article-update-displ network-auth-date'><%=elem.updatedAt.toString().substr(4,11) %> </span>

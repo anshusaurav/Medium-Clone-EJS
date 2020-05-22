@@ -69,7 +69,16 @@
             <div class='article-page-title-container'>
                 <h2 class='article-page-title'><%= article.title%></h2>
                 <div class='article-page-title-author-div'>
-                    <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= article.author.avatar %>"/></div>
+                    <div class="profilepic"><img class="responsive-img" src="<% if(article.author.avatar === 'avatar' && (article.author.github_oauth ||article.author.google_oauth)) { %> 
+                        <% if(article.author.github_oauth) { %>
+                            <%= article.author.github_profile.photo %>
+                        <%} else if(article.author.google_oauth) { %>
+                            <%= article.author.google_profile.picture %>
+                        <% } %>   
+                    <%} else { %>
+                        <%= `/data/uploads/${article.author.avatar}`%>
+                    <%} %>              
+                    "/></div>
                     <div class='article-page-grid-user-follow article-page-author'>
                         <a href = "/users/<%=article.author.id%>"class='article-auth-grid-elem article-auth-link'><%= article.author.name%></a> 
                         <span class='article-update-displ-grid-elem article-update-displ'><%= article.updatedAt.toString().substr(4,11) %></span>
@@ -119,7 +128,16 @@
                         <% } %>
                     </div>
                     <div class="comment-author-div">
-                        <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= elem.author.avatar %>"/></div>
+                        <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
+                            <% if(elem.author.github_oauth) { %>
+                                <%= elem.author.github_profile.photo %>
+                            <%} else if(elem.author.google_oauth) { %>
+                                <%= elem.author.google_profile.picture %>
+                            <% } %>   
+                        <%} else { %>
+                            <%= `/data/uploads/${elem.author.avatar}`%>
+                        <%} %>              
+                        "/></div>
                         <div class='article-page-grid-user-follow com-author-view'>
                             
                                 <a href="/users/<%= elem.author.id %>/" class="article-auth-grid-elem by-span"><%= elem.author.name%></a> 

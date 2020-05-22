@@ -29,7 +29,16 @@
     
     <div class="profile-container">
     <div class="profilecontent">
-      <div class="profilepic"><img class="responsive-img" src="/data/uploads/<%= visitor.avatar %>"/></div>
+      <div class="profilepic"><img class="responsive-img" src="<% if(visitor.avatar === 'avatar' && (visitor.github_oauth ||visitor.google_oauth)) { %> 
+        <% if(visitor.github_oauth) { %>
+            <%= visitor.github_profile.photo %>
+        <%} else if(visitor.google_oauth) { %>
+            <%= visitor.google_profile.picture %>
+        <% } %>   
+        <%} else { %>
+            <%= `/data/uploads/${visitor.avatar}`%>
+        <%} %>              
+      "/></div>
       <h1 class='name-profile text-align-center'><%= visitor.name %></h1>
       <h2 class='bio-profile'>
         <%= visitor.bio %>
