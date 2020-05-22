@@ -294,7 +294,7 @@
         <div class='filter-view-grid'>
         <% if(weekArticles.length) { %>
             <div class='article-list-grid-week'>
-            <% feedArticles.forEach(elem => { %>
+            <% weekArticles.forEach(elem => { %>
                 <div class='single'>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>

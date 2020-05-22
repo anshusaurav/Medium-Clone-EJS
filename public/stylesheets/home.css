@@ -248,11 +248,8 @@
     box-shadow: 3px 4px 0px #4e57ef;
     transition: all 0.2s ease-in-out;
 }
-.article-list-grid-week, .article-list-grid-day, .article-list-grid-feed, .article-list-grid-infinity {
+.article-list-grid-week, .article-list-grid-today, .article-list-grid-feed, .article-list-grid-infinity {
     display: grid;
     grid-gap: 1rem;
     padding: 0.5rem;
-}
-.filter-view-grid{
-    
 }
