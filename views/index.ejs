@@ -33,6 +33,7 @@
         <input type="checkbox" class="dd-input" id="test">
         <div class='dd-menu-div'>
         <ul class="dd-menu">
+          <li><a href='/articles/new'>Write New Post</a></li>
           <li><a href="/users/<%=user.id %>">Profile</a></li>
           <li><a href="/home">Home</a></li>
           <li class="divider"></li>
@@ -72,7 +73,12 @@
           <div class='tags-grid'>
               <% tags.forEach(element => { %>
                   <div class="tag-elem-div">
-                  <a href="#" class="tag-elem"><span class='hash-mark'><p>#</p></span> <%= `${element.tagname}`%></a>
+                  <a href="<% if(isUser){ %>
+                    /tags/<%= element.tagname %>
+                        <%}else {%>
+                          #
+                        <% }%>
+                    " class="tag-elem"><span class='hash-mark'><p>#</p></span> <%= `${element.tagname}`%></a>
                   </div>
               <% }); %>
           </div>
