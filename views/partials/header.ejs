@@ -43,11 +43,11 @@
           <input type="checkbox" class="dd-input" id="test">
           <div class='dd-menu-div'>
           <ul class="dd-menu">
-            <li><a href='/articles/new'>Write New Post</a></li>
-            <li><a href="/users/<%=user.id %>">Profile</a></li>
-            <li><a href="/home">Home</a></li>
+            <li><i class="fas fa-pencil-alt"></i><a href='/articles/new'>New Post</a></li>
+            <li><i class="fas fa-user"></i><a href="/users/<%=user.id %>">Profile</a></li>
+            <li><i class="fas fa-house-user"></i><a href="/home">Home</a></li>
             <li class="divider"></li>
-            <li>
+            <li><i class="fas fa-sign-out-alt"></i>
               <a href="/users/logout">Logout</a>
             </li>
           </ul>

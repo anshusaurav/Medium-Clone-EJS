@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Medium -Get smarted about what matters to you</title>
     <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="https://kit.fontawesome.com/f4ce9ea80b.js" crossorigin="anonymous"></script>
+      
     <link rel="shortcut icon" type="image/png" href="/images/medium-favicon.png"/>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
@@ -33,11 +35,11 @@
         <input type="checkbox" class="dd-input" id="test">
         <div class='dd-menu-div'>
         <ul class="dd-menu">
-          <li><a href='/articles/new'>Write New Post</a></li>
-          <li><a href="/users/<%=user.id %>">Profile</a></li>
-          <li><a href="/home">Home</a></li>
+          <li><i class="fas fa-pencil-alt"></i><a href='/articles/new'>New Post</a></li>
+          <li><i class="fas fa-user"></i><a href="/users/<%=user.id %>">Profile</a></li>
+          <li><i class="fas fa-house-user"></i><a href="/home">Home</a></li>
           <li class="divider"></li>
-          <li>
+          <li><i class="fas fa-sign-out-alt"></i>
             <a href="/users/logout">Logout</a>
           </li>
         </ul>

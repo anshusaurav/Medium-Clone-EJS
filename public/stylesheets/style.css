@@ -911,9 +911,13 @@ a{
 }
 
 .dd-menu li {
-  padding: 10px 20px;
+  padding: 10px 8px;
   cursor: pointer;
   white-space: nowrap;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  justify-content: center;
+  align-items: center;
 }
 
 .dd-menu li:hover {
