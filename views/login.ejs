@@ -83,20 +83,18 @@
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
    
   <script>
-    // $(document).ready(function(){
-    //   $(function () {
-    //     var socket = io.connect('http://localhost:3000');
-    //     $('.form').submit(function(){
-    //       console.log($('input[name=email]').val());
-    //       socket.emit('chat message', $('input[name=email]').val());
-    //       $('input[name=email]').val('');
-    //       return false;
-    //     });
-    //     socket.on('chat message', function(msg){
-    //       $('#messages').append($('<li>').text(msg));
-    //       window.scrollTo(0, document.body.scrollHeight);
-    //     });
-    //   });
-    // });
+    $(document).ready(function(){
+      $(function () {
+        var socket = io.connect('http://localhost:3000');
+        $('form').submit(function(){
+          console.log($('input[name=email]').val());
+          socket.emit('chat message', $('input[name=email]').val());
+          
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+    });
     
   </script>

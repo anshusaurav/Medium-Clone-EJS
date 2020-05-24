@@ -26,7 +26,7 @@ router.get('/', function(req, res) {
 
 
 router.get('/home', function(req, res, next){
-  console.log('HRERE');
+  // console.log('HRERE');
   Article.find({})
         .populate('author')
         .exec((err, articles) =>{
@@ -45,7 +45,7 @@ router.get('/home', function(req, res, next){
                 });
                 let feedSupport = [];
                 let feedArticles = articles.filter(elem =>{
-                  console.log(elem.tags,  user.tagsFollowed.filter(value => elem.tags.includes(value)));
+                  // console.log(elem.tags,  user.tagsFollowed.filter(value => elem.tags.includes(value)));
                   if(user.following.includes(elem.author.id)) { //||
                     feedSupport.push(`Since you follow ${elem.author.name}`);
                     return true;
@@ -56,7 +56,7 @@ router.get('/home', function(req, res, next){
                   }
                   return false;
                 });
-                console.log('feedarticles', feedArticles.length);
+                // console.log('feedarticles', feedArticles.length);
                 var today = new Date();
                 today.setDate(today.getDate() - 1);
                 let todayArticles = articles.filter(elem =>{
@@ -65,14 +65,14 @@ router.get('/home', function(req, res, next){
                     return false;
                   return true;
                 });
-                console.log('todayArticles', todayArticles.length);
+                // console.log('todayArticles', todayArticles.length);
                 let weekArticles = articles.filter(elem =>{
                   console.log(elem.updatedAt, isLast7Days(elem));
                   if(isLast7Days(elem))
                     return true;
                   return false;
                 });
-                console.log('weekArticles', weekArticles.length);
+                // console.log('weekArticles', weekArticles.length);
                 Tag.find({}, (err, tags) =>{
                   if(err)
                     return next(err);

@@ -104,7 +104,7 @@
       <% } %>
     </div>
   </div>
-  
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script>
     let arrTags = [];
     document.addEventListener('click', toggleTagEventHandler);
@@ -143,7 +143,11 @@
    
     }
     
-    
+    var socket = io("http://localhost:3000");
+    // use your socket
+    socket.on("welcome", (message) => {
+        console.log('Hello');
+    });
 
   </script>
 </main>
