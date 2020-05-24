@@ -26,20 +26,8 @@ mongoose.connect('mongodb://localhost/alt-pages-smartdb',
   console.log("connected", err? err:true);
 })
 
-var express = require('express'),
-    io = require('socket.io'),
-    http = require('http'),
-    app = express(),
-    server = http.createServer(app),
-    io = io.listen(server);
-    io.on( "connection", function( socket )
-    {
-        
-        console.log( "A user connected" );
-        socket.on('chat message', function(msg){
-          io.emit('chat message', msg);
-        });
-    });
+var app = express();
+   
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -76,6 +64,7 @@ app.use((req, res, next) =>{
   next();
 });
 app.use('/', indexRouter);
+
 app.use('/articles', articlesRouter);
 app.use('/tags', tagsRouter);
 app.use('/users', usersRouter);

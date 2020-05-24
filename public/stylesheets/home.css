@@ -6,6 +6,12 @@
 .right-home-div{
     padding: 0.5rem;
 }
+.notifications-center{
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    z-index: 1000;
+}
 .more-from-network-div{
     display: grid;
     grid-template-columns: 1fr 2fr;

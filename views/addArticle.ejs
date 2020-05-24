@@ -18,6 +18,9 @@
     </form>
     
 </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+ 
     <script>
 
         //This just manages the auto expand of the <textarea>
@@ -49,6 +52,21 @@
                 });
             }
         }();
+     
+        $(document).ready(function(){
+        $(function () {
+            var socket = io.connect('http://localhost:3000');
+            $('form').submit(function(){
+            console.log($('.title-article').val());
+            socket.emit('new article', $('.title-article').val() + '@@'+$('.profile-pic-header').attr('data-id'));
+            
+            });
+            socket.on('chat message', function(msg){
+            $('#messages').append($('<li>').text(msg));
+            });
+        });
+        });
+    
     </script>
 
 <%- include('partials/footer') -%>
