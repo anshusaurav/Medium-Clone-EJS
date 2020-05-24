@@ -41,6 +41,8 @@
     "dotenv",
     "bcrypt",
     "showdown",
-    "prismjs"
+    "prismjs",
+    "socketio",
+    "notifications"
   ]
 }

@@ -7,8 +7,9 @@ var mongoose = require('mongoose');
 var flash = require("connect-flash")
 var session = require("express-session");
 var MongoStore = require('connect-mongo')(session);
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var multer  = require('multer');
+
+var upload = multer({ dest: 'uploads/' });
 var passport = require('passport');
 require("dotenv").config();
 require("./modules/passport");
@@ -27,7 +28,6 @@ mongoose.connect('mongodb://localhost/alt-pages-smartdb',
 
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
