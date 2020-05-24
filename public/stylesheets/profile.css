@@ -388,13 +388,16 @@ a{
 
 .dd-button {
   display: inline-block;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   border-radius: 4px;
   /* padding: 10px; */
-  /* background-color: #ffffff; */
+  background-color: #ffffff;
   cursor: pointer;
   white-space: nowrap;
   border-radius: 50%;
+  /* opacity: 0.6; */
+  max-width: 48px;
+  max-height: 48px;
 }
 .dropdown a{
   font-family: 'Muli', sans-serif;

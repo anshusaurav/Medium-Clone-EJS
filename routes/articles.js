@@ -365,15 +365,17 @@ router.post('/:id', function(req, res, next) {
     let newTags = req.body.tags;
     if(req.session.userId){
         User.findById(req.session.userId, (err, user) => {
-            Article.findByIdAndUpdate(id, req.body,  {new: true, runValidators: true},(err, data) => {
+            Article.findByIdAndUpdate(id, req.body,  {runValidators: true},(err, data) => {
                 if(err) 
                     return next(err);
                 let oldTags = data.tags;
+                console.log(oldTags);
                 //remove newtags from old tags
                 oldTags = oldTags.filter((elem) => {
                     return !newTags.includes(elem);
                 })
-
+                console.log(oldTags);
+                console.log(newTags);
                 oldTags.forEach(tagname =>{
                     Tag.findOne({tagname}, (err, tag) =>{
                         if(err)
@@ -385,7 +387,7 @@ router.post('/:id', function(req, res, next) {
                             Tag.findOneAndUpdate({tagname},{$pull:{articles:data.id}},{new:true}, (err,updatedTag) => {
                                 if(err) 
                                     return next(err);
-                                if(updatedTag.articles.length == 0) {
+                                if(updatedTag.articles.length === 0) {
                                     Tag.findOneAndDelete({tagname}, (err, deletedTag)=>{
                                         if(err)
                                             return next(err); 
