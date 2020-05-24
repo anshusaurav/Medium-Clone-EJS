@@ -43,10 +43,17 @@ router.get('/home', function(req, res, next){
                   return (user.following.includes(elem.author.id));
                   //user.tagsFollowed.filter(value => elem.tags.includes(value));
                 });
+                let feedSupport = [];
                 let feedArticles = articles.filter(elem =>{
                   console.log(elem.tags,  user.tagsFollowed.filter(value => elem.tags.includes(value)));
-                  if(user.following.includes(elem.author.id)||(user.tagsFollowed.filter(value => elem.tags.includes(value)).length > 0))
+                  if(user.following.includes(elem.author.id)) { //||
+                    feedSupport.push(`Since you follow ${elem.author.name}`);
                     return true;
+                  }
+                  else if((user.tagsFollowed.filter(value => elem.tags.includes(value)).length > 0)) {
+                    feedSupport.push(`Since you follow ${user.tagsFollowed.filter(value => elem.tags.includes(value))[0]}`);
+                    return true;
+                  }
                   return false;
                 });
                 console.log('feedarticles', feedArticles.length);
@@ -77,6 +84,7 @@ router.get('/home', function(req, res, next){
                       articles: articles, 
                       fArticles: followedArticles,
                       feedArticles,
+                      feedSupport,      //For mention follow tag or author, author if both present
                       todayArticles,
                       weekArticles,
                       user, 

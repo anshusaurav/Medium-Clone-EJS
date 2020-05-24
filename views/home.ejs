@@ -183,8 +183,11 @@
         <div class='filter-view-grid'>
         <% if(feedArticles.length) { %>
             <div class='article-list-grid-feed'>
-            <% feedArticles.forEach(elem => { %>
+            <% feedArticles.forEach((elem,index) => { %>
+                <% console.log(elem.title) %>
                 <div class='single'>
+                    <% console.log(feedSupport[index]) %>
+                    <p class='feed-support-p'><%= feedSupport[index] %></p>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>
                         <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
@@ -519,14 +522,14 @@
 <script>
     // var allArticles = articles;
     // console.log(allArticles);
-    document.querySelector('.infinity-filter-view').classList.toggle('filter-view-single-active');
+    document.querySelector('.feed-filter-view').classList.toggle('filter-view-single-active');
     
     
     var screens = Array.from(document.querySelectorAll('.filter-view-grid'));
     screens.forEach(elem =>{
         elem.style.display='none';
     });
-    screens[3].style.display = 'block';
+    screens[0].style.display = 'block';
     
     document.addEventListener('click', updateListView);
     function updateListView(event) {
