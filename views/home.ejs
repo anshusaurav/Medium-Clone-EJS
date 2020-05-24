@@ -396,7 +396,7 @@
         <% if(articles.length) { %>
         <div class='article-list-grid-infinity'>
         <% articles.forEach(elem => { %>
-            <div class='single'>
+            <div class='single single-for-slide'>
                 <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                 <div class='article-page-title-author-div'>
                     <div class="profilepic"><img class="responsive-img" src="<% if(elem.author.avatar === 'avatar' && (elem.author.github_oauth ||elem.author.google_oauth)) { %> 
