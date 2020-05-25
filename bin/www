@@ -7,7 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('user-login:server');
 var http = require('http');
-
+var Article = require("../models/article");
+var User = require("../models/user");
 /**
  * Get port from environment and store in Express.
  */
@@ -26,9 +27,7 @@ var io = require('socket.io')(server);
  */
 io.on('connection', function(socket){
   console.log('a user connected');
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+  
   socket.on('new article', function(msg){
     io.emit('new article', msg);
   });

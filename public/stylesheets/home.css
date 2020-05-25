@@ -8,8 +8,8 @@
 }
 .notifications-center{
     position: fixed;
-    bottom: 100px;
-    right: 100px;
+    bottom: 40px;
+    right: 40px;
     z-index: 1000;
 }
 .more-from-network-div{
@@ -282,6 +282,8 @@
     background-color: rgba(76, 40, 158, 0.836);
     color: white;
     border-radius: 16px;
+    position: relative;
+    width: 320px;
     
 }
 .new-notif-p{
@@ -293,12 +295,19 @@
 .new-notification-text{
     padding: 0.75rem;
     font-size: 14px;
+    /* white-space: pre; */
 }
 .notif-author{
     display: block;
     color: whitesmoke;
     padding: 0 0.75rem;
     font-size: 10px;
+}
+.notif-stack-des{
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 14px;
 }
 @keyframes cssAnimation {
     to {
