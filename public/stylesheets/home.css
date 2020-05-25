@@ -274,10 +274,11 @@
 .notifications-center{
     display: grid;
     grid-gap: 1rem;
+    min-width: 280px;
 
 }
 .new-notification-div{
-    height: 144px;
+    height: 120px;
     background-color: rgba(76, 40, 158, 0.836);
     color: white;
     border-radius: 16px;
@@ -286,9 +287,18 @@
 .new-notif-p{
     padding: 0.75rem;
     padding-bottom: 0;
+    font-size: 12px;
+    
 }
 .new-notification-text{
     padding: 0.75rem;
+    font-size: 14px;
+}
+.notif-author{
+    display: block;
+    color: whitesmoke;
+    padding: 0 0.75rem;
+    font-size: 10px;
 }
 @keyframes cssAnimation {
     to {

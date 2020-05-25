@@ -578,12 +578,12 @@
         socket.on('new article', function(msg){
             let title = msg.split('@@')[0];
             let authorId = msg.split('@@')[1];
-            let articleId = msg.split('@@')[2];
-            let authorName = msg.split('@@')[3];
+            let authorName = msg.split('@@')[2];
+            let articleId = msg.split('@@')[3];
             console.log(title,  authorId);
             $('.notifications-center').append($('<div class="new-notification-div">').html(`<p class='new-notif-p'>New Post Available</p><h5 class='new-notification-text'>
 
-${title} by ${authorId}</h5>`));
+${title}</h5> <a href= '/users/${authorId}' class='notif-author'>by ${authorName}</a>`));
 
          // $('.new-notification').html(msg);
         });
