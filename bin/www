@@ -28,7 +28,11 @@ var io = require('socket.io')(server);
 io.on('connection', function(socket){
   console.log('a user connected');
   
-  socket.on('new article', function(msg){
+  socket.on('new article', async function(msg){
+    var tokens = msg.split('@@');
+    console.log(tokens);
+    var user = await User.findById(tokens[1]);
+    console.log(user);
     io.emit('new article', msg);
   });
 });

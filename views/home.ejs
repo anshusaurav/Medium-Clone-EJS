@@ -165,6 +165,7 @@
                     <% }%>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class="container list-container-view">
@@ -187,9 +188,7 @@
         <% if(feedArticles.length) { %>
             <div class='article-list-grid-feed'>
             <% feedArticles.forEach((elem,index) => { %>
-                <% console.log(elem.title) %>
                 <div class='single'>
-                    <% console.log(feedSupport[index]) %>
                     <p class='feed-support-p'><%= feedSupport[index] %></p>
                     <a href="/articles/<%= elem.id %>/"><h2 class='single-heading'><%= elem.title%></h2></a>
                     <div class='article-page-title-author-div'>
@@ -574,7 +573,7 @@
             let articleId = msg.split('@@')[3];
             console.log(title,  authorId);
             $('.notifications-center')
-            .append($('<div class="new-notification-div">')
+            .append($(`<div class="new-notification-div" >`)
             .html(`<p class='new-notif-p'>
                         New Post Available
                     </p>
@@ -588,6 +587,7 @@
                     </i>`));
 
         });
+
       });
     });
     
