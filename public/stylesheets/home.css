@@ -259,3 +259,48 @@
     grid-gap: 1rem;
     padding: 0.5rem;
 }
+.new-notification-div {
+    -moz-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 10s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.notifications-center{
+    display: grid;
+    grid-gap: 1rem;
+
+}
+.new-notification-div{
+    height: 144px;
+    background-color: rgba(76, 40, 158, 0.836);
+    color: white;
+    border-radius: 16px;
+    
+}
+.new-notif-p{
+    padding: 0.75rem;
+    padding-bottom: 0;
+}
+.new-notification-text{
+    padding: 0.75rem;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}

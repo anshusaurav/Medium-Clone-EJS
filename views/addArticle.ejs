@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 <div class="container">
-    <form class="add-article" action="/articles" method="POST">
+    <form class="add-article" action="/articles" method="POST" data-id="<%= user.name %>"</form>>
         <div class="add-elem-div">
             <input class="title-article" type="text" name="title" placeholder="Title" required>
         </div>
@@ -58,7 +58,9 @@
             var socket = io.connect('http://localhost:3000');
             $('form').submit(function(){
             console.log($('.title-article').val());
-            socket.emit('new article', $('.title-article').val() + '@@'+$('.profile-pic-header').attr('data-id'));
+            socket.emit('new article', $('.title-article').val() +
+                '@@'+ $('.profile-pic-header').attr('data-id') + 
+                '@@' + $('form').attr('data-id'));
             
             });
             socket.on('chat message', function(msg){

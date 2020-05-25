@@ -17,9 +17,7 @@
     <% } %>
   </div>   
 <div class='notifications-center'>
-    <h5 class='new-notification'>
-
-    </h5>
+    
 </div>
 <div class='home-grid'>
     <div class='left-home-div'>
@@ -37,7 +35,7 @@
                                                         <%} else { %>
                                                             <%= `/data/uploads/${user.avatar}`%>
                                                         <%} %>              
-                            "/>
+                            " data-id="<%= user.id %>"/>
                         </div>
                         <div class='article-page-author author-home-sub-grid'>
                             <a href="/users/<%=user.id%>" class='article-auth-link main-user-name'>
@@ -578,7 +576,16 @@
           $('#messages').append($('<li>').text(msg));
         });
         socket.on('new article', function(msg){
-          $('.new-notification').html(msg);
+            let title = msg.split('@@')[0];
+            let authorId = msg.split('@@')[1];
+            let articleId = msg.split('@@')[2];
+            let authorName = msg.split('@@')[3];
+            console.log(title,  authorId);
+            $('.notifications-center').append($('<div class="new-notification-div">').html(`<p class='new-notif-p'>New Post Available</p><h5 class='new-notification-text'>
+
+${title} by ${authorId}</h5>`));
+
+         // $('.new-notification').html(msg);
         });
       });
     });
