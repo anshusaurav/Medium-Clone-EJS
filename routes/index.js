@@ -117,6 +117,7 @@ router.get('/auth/github/callback', passport.authenticate('github',
       console.log(req.session.userId, req.session.passport.user);
       if(req.session.passport.user != req.session.userId) {
         let deletedUser = await User.findByIdAndDelete(req.session.passport.user);
+        console.log(deletedUser);
         req.flash('Error', 'Email different please sign in to your github account');
         res.locals.message = req.flash();
         return res.redirect('/home');

@@ -31,8 +31,11 @@ io.on('connection', function(socket){
   socket.on('new article', async function(msg){
     var tokens = msg.split('@@');
     console.log(tokens);
-    var user = await User.findById(tokens[1]);
-    console.log(user);
+    var user = await User.findById(tokens[1]).populate('articles');
+    var article = await Article.find({}).sort({"updatedAt": -1}).limit(1);
+    console.log(article);
+    
+    // console.log(user);
     io.emit('new article', msg);
   });
 });
