@@ -1,5 +1,6 @@
-# Clone of Devto
-Create a clone of Devto
+# Clone of Medium
+
+Create a clone of Medium
 
 ## Endpoints:
 
@@ -8,6 +9,7 @@ Create a clone of Devto
 `POST users/login`
 
 Example request body:
+
 ```JSON
 {
   "user":{
@@ -22,12 +24,12 @@ No authentication required, returns a [User](#users-for-authentication)
 
 Required fields: `email`, `password`
 
-
 ### Registration:
 
 `POST /api/users`
 
 Example request body:
+
 ```JSON
 {
   "user":{
@@ -42,21 +44,18 @@ No authentication required, returns a [User](#users-for-authentication)
 
 Required fields: `email`, `username`, `password`
 
-
-
 ### Get Current User
 
 `GET /api/user`
 
 Authentication required, returns a [User](#users-for-authentication) that's the current user
 
-
-
 ### Update User
 
 `PUT /api/user`
 
 Example request body:
+
 ```JSON
 {
   "user":{
@@ -69,18 +68,13 @@ Example request body:
 
 Authentication required, returns the [User](#users-for-authentication)
 
-
 Accepted fields: `email`, `username`, `password`, `image`, `bio`
-
-
 
 ### Get Profile
 
 `GET /api/profiles/:username`
 
 Authentication optional, returns a [Profile](#profile)
-
-
 
 ### Follow user
 
@@ -90,8 +84,6 @@ Authentication required, returns a [Profile](#profile)
 
 No additional parameters required
 
-
-
 ### Unfollow user
 
 `DELETE users/:username/follow`
@@ -99,8 +91,6 @@ No additional parameters required
 Authentication required, returns a [Profile](#profile)
 
 No additional parameters required
-
-
 
 ### List Articles
 
@@ -115,7 +105,6 @@ Returns most recent articles globally by default.
 Can also take `limit` and `offset` query parameters like [List Articles](#list-articles)
 
 Authentication required, will return [multiple articles](#multiple-articles) created by followed users, ordered by most recent first.
-
 
 ### Get Article
 
@@ -146,8 +135,6 @@ Required fields: `title`, `description`, `body`
 
 Optional fields: `tagList` as an array of Strings
 
-
-
 ### Update Article
 
 `PUT /api/articles/:id`
@@ -168,14 +155,11 @@ Optional fields: `title`, `description`, `body`
 
 The `slug` also gets updated when the `title` is changed
 
-
 ### Delete Article
 
 `DELETE /articles/:id`
 
 Authentication required
-
-
 
 ### Add Comments to an Article
 
@@ -195,23 +179,17 @@ Authentication required, returns the created [Comment](#single-comment)
 
 Required field: `body`
 
-
-
 ### Get Comments from an Article
 
 `GET /articles/:id/comments`
 
 Authentication optional, returns [multiple comments](#multiple-comments)
 
-
-
 ### Delete Comment
 
 `DELETE /articles/:id/comments/:id`
 
 Authentication required
-
-
 
 ### Favorite Article
 
@@ -221,8 +199,6 @@ Authentication required, returns the [Article](#single-article)
 
 No additional parameters required
 
-
-
 ### Unfavorite Article
 
 `DELETE /articles/:id/favorite`
@@ -230,8 +206,6 @@ No additional parameters required
 Authentication required, returns the [Article](#single-article)
 
 No additional parameters required
-
-
 
 ### Get Tags
 

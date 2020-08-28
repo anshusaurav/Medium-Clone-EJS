@@ -227,9 +227,8 @@ router.post('/:id/edit',upload.single('avatar'),function(req, res, next){
   let id  = req.params.id;
   //console.log(req.body);
   //console.log(req.file);
-  
+    
   if(req.file){
-    console.log('here');
     req.body.avatar = req.file.filename;
     // console.log(req.body.avatar);
   }
